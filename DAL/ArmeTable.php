@@ -12,4 +12,6 @@ final class ArmeTable extends MySQLTable
     {
         parent::insert($arme);
     }
+
+    
 }
