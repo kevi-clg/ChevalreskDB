@@ -1,0 +1,16 @@
+/*div principal*/
+.details{
+    background-color: white;
+    color: #514F59;
+}
+/*div commentaire*/
+.commentaire{
+    background-color: #443185;
+    color: #514F59;
+    border-radius: 30px;
+}
+/*input*/
+.Input_Page_details{
+    background-color: #787EE9;
+    color: #514F59;
+}

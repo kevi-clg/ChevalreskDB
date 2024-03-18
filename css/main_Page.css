@@ -1,0 +1,16 @@
+/*div principal liste d'article */
+.Liste_Article{
+    background-color: white;
+    color: #514F59;
+}
+
+/*div case pour un article*/
+.Case_Article{
+    background-color: #443185;
+    color: #514F59;
+}
+/*input page liste Article*/
+.Input_Page_Article{
+    background-color: #787EE9;
+    color: #514F59;
+}
