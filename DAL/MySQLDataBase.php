@@ -288,6 +288,19 @@ abstract class MySQLTable
             return $data;
         }
     }
+    public function getJoueur($id = '')
+    {
+        if ($id !== '') {
+            $data = $this->selectByIdJoueur($id);
+            if (isset($data[0]))
+                return $data[0];
+            else
+                return null;
+        } else {
+            $data = $this->selectAll();
+            return $data;
+        }
+    }
     public function exist($id)
     {
         return ($this->get($id) !== null);
@@ -315,6 +328,14 @@ abstract class MySQLTable
         return $this->toObjectArray($data);
     }
     public function selectById($id)
+    {
+        $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+        $tableName = $this->tableName();
+        $sql = "SELECT * FROM $tableName WHERE Id = $id";
+        $data = $this->_DB->querySqlCmd($sql);
+        return $this->toObjectArray($data);
+    }
+    public function selectByIdJoueur($id)
     {
         $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
         $tableName = $this->tableName();
