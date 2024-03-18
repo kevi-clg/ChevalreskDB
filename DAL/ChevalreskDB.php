@@ -1,6 +1,7 @@
 <?php
 include_once 'DAL/MySQLDataBase.php';
 include_once 'DAL/JoueursTable.php';
+include_once 'DAL/ItemTable.php';
 
 function DB()
     {

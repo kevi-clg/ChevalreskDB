@@ -11,9 +11,9 @@ $viewContent = "";
 foreach ($list as $Joueur) {
    
         $id = strval($Joueur->Id);
-        $name = $Joueur->Nom;
-        $avatar = $Joueur->Avatar;
-        $alias = $Joueur->Alias;
+        $name = $Joueur->nom;
+        $avatar = $Joueur->avatar;
+        $alias = $Joueur->alias;
        
         
         
