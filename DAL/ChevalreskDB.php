@@ -10,3 +10,15 @@ function DB()
     {
         return new JoueursTable();
     }
+    function ItemTable()
+    {
+        return new ItemTable();
+    }
+    function ArmeTable()
+    {
+        return new ArmeTable();
+    }
+    function ArmureTable()
+    {
+        return new ArmureTable();
+    }
