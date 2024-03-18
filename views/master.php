@@ -11,6 +11,7 @@ if (!isset($viewContent))
 if (!isset($viewScript))
     $viewScript = "";
     
+    
 $stylesBundle = "";
 if (file_exists("views/stylesBundle.html"))
     $stylesBundle = file_get_contents("views/stylesBundle.html");
