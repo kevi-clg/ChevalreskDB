@@ -1,6 +1,6 @@
 <?php
 include_once 'DAL/MySQLDataBase.php';
-//
+///
 const photopath = "data/images/photositem/";
 final class ItemTable extends MySQLTable
 {
