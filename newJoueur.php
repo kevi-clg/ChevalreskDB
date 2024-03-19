@@ -1,8 +1,14 @@
 <?php
 require 'php/sessionManager.php';
-require 'DAL/ChevalreskDB.php';
+
 
 
 anonymousAccess();
-JoueursTable()->insert(new Joueur($_POST));
+
+extract($_POST);
+
+$Alias;
+$Nom;
+$Prenom;
+
 redirect('newJoueurForm.php'); 
