@@ -2,12 +2,12 @@
 include 'php/sessionManager.php';
 include 'php/formUtilities.php';
 include 'php/date.php';
-include 'DAL/ChevalreskDB.php';
+
 
 $viewName = "itemList";
-userAccess();
+//userAccess();
 $viewTitle = "items";
-$list = ItemTable()->get();
+
 $viewContent = "<div class='itemsLayout'>";
 $isAdmin = (bool) $_SESSION["isAdmin"];
 $owneritems = false;
@@ -23,24 +23,41 @@ $sortType = $_SESSION["itemSortType"];
 // } 
 //faire le meme avec type
 
+$host = 'localhost';
+    $db = 'dbchevalersk18';
+    $user = 'root';
+    $password = '';
+    $charset = 'utf8';
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
+    try {
+        $conn = new PDO($dsn,$user,$password,[PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC]);
+        echo "connexion établie <br>";
+    } catch (\Throwable $th) {
+        throw new PDOException($th->getMessage()) ;
+    }
+$list = [];
 
+$stmt = $conn->query("call selectAllItems()");
+while($row = $stmt->fetch()){
+    array_push($list,$row);
+}
 
 
 
 foreach ($list as $item) {
     
-        $id = strval($item->Id);
-        $title = $item->nom;
+        $id = strval($item->idItem);
+        $nom = $item->nom;
         $image = $item->photo;
 
         
         
             $itemHTML = <<<HTML
                 <div class="itemLayout" item_id="$id">
-                    <div class="itemTitleContainer" title="$description">
+                    <div class="itemTitleContainer" title="$nom">
                         <div class="itemTitle ellipsis">$nom</div>
-                        $editCmd
+                        
                     </div>
                     <a href="itemDetails.php?id=$id">
                         

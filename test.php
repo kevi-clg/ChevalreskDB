@@ -43,6 +43,18 @@
 //     $stmt->bindValue(':param2','Éric', PDO::PARAM_STR);
 //     $stmt->bindValue(':param3',27, PDO::PARAM_INT);
 //     $stmt->execute();
+
+    // $sql = 'CALL AjouterArme(:param1,:param2,:param3,:param4,:param5,:param6,:param7,:param8)';
+    // $stmt = $conn->prepare($sql);
+    // $stmt->bindValue(':param1','Objet1', PDO::PARAM_STR);
+    // $stmt->bindValue(':param2',3, PDO::PARAM_STR);
+    // $stmt->bindValue(':param3',"Arme", PDO::PARAM_INT);
+    // $stmt->bindValue(':param4',30, PDO::PARAM_STR);
+    // $stmt->bindValue(':param5','292F99C8-BBC3-4834-AECD-45C12A9C063D.png', PDO::PARAM_STR);
+    // $stmt->bindValue(':param6',5, PDO::PARAM_INT);
+    // $stmt->bindValue(':param7',1, PDO::PARAM_INT);
+    // $stmt->bindValue(':param8',"Arme pour tuer", PDO::PARAM_INT);
+    // $stmt->execute();
     
 //     $stmt = $conn->query('SELECT * from joueurs');
 
