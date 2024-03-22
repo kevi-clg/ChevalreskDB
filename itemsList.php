@@ -60,7 +60,7 @@ foreach ($list as $item) {
                         
                     </div>
                     <a href="itemDetails.php?id=$id">
-                        
+                        <img src="" alt="">
                         
                     </a>
                 </div>           
