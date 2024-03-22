@@ -2,7 +2,7 @@
 include 'php/sessionManager.php';
 include 'php/formUtilities.php';
 include 'php/date.php';
-
+include 'views/connection.php';
 
 $viewName = "itemList";
 //userAccess();
@@ -23,19 +23,19 @@ $sortType = $_SESSION["itemSortType"];
 // } 
 //faire le meme avec type
 
-$host = 'localhost';
-    $db = 'dbchevalersk18';
-    $user = 'root';
-    $password = '';
-    $charset = 'utf8';
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+// $host = 'localhost';
+//     $db = 'dbchevalersk18';
+//     $user = 'root';
+//     $password = '';
+//     $charset = 'utf8';
+//     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
-    try {
-        $conn = new PDO($dsn,$user,$password,[PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC]);
-        echo "connexion établie <br>";
-    } catch (\Throwable $th) {
-        throw new PDOException($th->getMessage()) ;
-    }
+//     try {
+//         $conn = new PDO($dsn,$user,$password,[PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC]);
+//         echo "connexion établie <br>";
+//     } catch (\Throwable $th) {
+//         throw new PDOException($th->getMessage()) ;
+//     }
 $list = [];
 
 $stmt = $conn->query("call selectAllItems()");
@@ -47,9 +47,9 @@ while($row = $stmt->fetch()){
 
 foreach ($list as $item) {
     
-        $id = strval($item->idItem);
-        $nom = $item->nom;
-        $image = $item->photo;
+        $id = $item["idItem"];
+        $nom = $item['nom'];
+        $image = $item['photo'];
 
         
         
