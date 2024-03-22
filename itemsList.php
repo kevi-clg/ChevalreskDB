@@ -3,10 +3,14 @@ include 'php/sessionManager.php';
 include 'php/formUtilities.php';
 include 'php/date.php';
 include 'views/connection.php';
+include_once 'DAL/validUser.php';
 
 $viewName = "itemList";
 //userAccess();
 $viewTitle = "items";
+if(!isValidUser()){
+    redirect("LoginForm.php");
+}
 
 $viewContent = "<div class='itemsLayout'>";
 $isAdmin = (bool) $_SESSION["isAdmin"];
