@@ -71,7 +71,7 @@ $viewContent = <<<HTML
         </form>
         <div class="cancel">
             <a href="loginForm.php">
-                <button class="form-control btn-secondary">Annuler</button>
+                <button class="form-control btn-secondary">Se Connecter</button>
             </a>
         </div>
 
