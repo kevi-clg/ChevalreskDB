@@ -1,26 +1,20 @@
 <?php
 
 
-$host = 'localhost';
-$db = 'dbchevalersk18';
-$user = 'root';
-$password = '';
-$charset = 'utf8';
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$conn ="";
-try {
-    $conn = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
-    echo "connexion établie <br>";
-} catch (\Throwable $th) {
-    throw new PDOException($th->getMessage());
-}
-
-function SelectAllItems()
+function Create_Joueur($alias, $prenom, $nom, $password)
 {
-    $list = [];
-
-    $stmt = $conn->query("call selectAllItems()");
-    while ($row = $stmt->fetch()) {
-        array_push($list, $row);
+    try {
+        $conn = new PDO('mysql:host=localhost;dbname=dbchevalersk18',"root", "");
+        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    } catch (Throwable $th) {
+        throw new PDOException($th->getMessage()) ;
     }
+    $stmt = $conn->prepare('CALL AjouterJoueur(:alias, :prenom, :nom, :password)');
+    
+    $stmt->bindParam(':alias', $alias);
+    $stmt->bindParam(':prenom', $prenom);
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':password', $password);
+
+        $stmt->execute();
 }

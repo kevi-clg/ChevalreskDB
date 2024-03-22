@@ -1,14 +1,8 @@
 <?php
 require 'php/sessionManager.php';
-
+require 'DAL/functions.php';
 
 
 anonymousAccess();
-
-extract($_POST);
-
-$Alias;
-$Nom;
-$Prenom;
-
+Create_Joueur($_POST['Alias'], $_POST['Prenom'], $_POST['Nom'],$_POST['Password']);
 redirect('newJoueurForm.php'); 
