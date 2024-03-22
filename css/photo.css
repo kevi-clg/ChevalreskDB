@@ -10,7 +10,7 @@
 .itemLayout {
     flex:1;
     scroll-snap-align: start;
-    margin: 0px;
+    margin: 20px;
 }
 
 .itemImage {

@@ -11,7 +11,7 @@ $viewTitle = "items";
 $viewContent = "<div class='itemsLayout'>";
 $isAdmin = (bool) $_SESSION["isAdmin"];
 $owneritems = false;
-if (isset($_GET["sort"]))
+if (isset ($_GET["sort"]))
     $_SESSION["itemSortType"] = $_GET["sort"];
 $sortType = $_SESSION["itemSortType"];
 
@@ -39,35 +39,43 @@ $sortType = $_SESSION["itemSortType"];
 $list = [];
 
 $stmt = $conn->query("call selectAllItems()");
-while($row = $stmt->fetch()){
-    array_push($list,$row);
+while ($row = $stmt->fetch()) {
+    array_push($list, $row);
 }
 
-
+##itemDetails.php?id=$id
 
 foreach ($list as $item) {
-    
-        $id = $item["idItem"];
-        $nom = $item['nom'];
-        $image = $item['photo'];
 
-        
-        
-            $itemHTML = <<<HTML
+    
+    $id = $item["idItem"];
+    $nom = $item['nom'];
+    $image = "data/images/items/" . $item['photo'];
+
+
+
+    $itemHTML = <<<HTML
+                
                 <div class="itemLayout" item_id="$id">
                     <div class="itemTitleContainer" title="$nom">
                         <div class="itemTitle ellipsis">$nom</div>
                         
                     </div>
                     <a href="itemDetails.php?id=$id">
-                        <img src="" alt="">
-                        
+                        <div class="itemImage" style="background-image:url('$image')">
+                            
+                            
+                        </div>
+                        <div class="itemCreationDate"> 
+                            
+                            
+                        </div>
                     </a>
-                </div>           
+                </div>                      
             HTML;
-            $viewContent = $viewContent . $itemHTML;
-        
-    
+    $viewContent = $viewContent . $itemHTML;
+
+
 }
 $viewContent = $viewContent . "</div>";
 $viewScript = <<<HTML
