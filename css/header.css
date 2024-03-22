@@ -1,5 +1,17 @@
 /*pour le header*/
-.Header{
+#header{
+    border: 1px solid #ccc;
+    border-radius: .25em;
     background-color: #443185;
+    display: grid;
+    grid-template-columns: 50px auto auto;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    padding: 8px;
+}
+
+
+.Header_Title{
     color: #514F59;
 }
