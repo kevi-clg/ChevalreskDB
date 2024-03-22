@@ -7,6 +7,6 @@ anonymousAccess();
 LoginJoueur($_POST['Alias'], $_POST['Password']);
 if($_SESSION['ValidUser'] == true)
 {
-    redirect('list.php');
+    redirect('itemsList.php');
 }
-redirect('newJoueurForm.php'); 
+redirect('LoginForm.php'); 
