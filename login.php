@@ -10,7 +10,7 @@ unset($_SESSION['ErreurPassword']);
 if (CheckAlias(($_POST['Alias']))) {
     LoginJoueur($_POST['Alias'], $_POST['Password']);
 }
-if ($_SESSION['ValidUser'] == true) {
+if ($_SESSION['validUser'] == true) {
     redirect('itemsList.php');
 }
 
