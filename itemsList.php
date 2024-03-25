@@ -13,11 +13,11 @@ if(!isvalidUser()){
 }
 
 $viewContent = "<div class='itemsLayout'>";
-$isAdmin = (bool) $_SESSION["isAdmin"];
+//$isAdmin = (bool) $_SESSION["isAdmin"];
 $owneritems = false;
 if (isset ($_GET["sort"]))
     $_SESSION["itemSortType"] = $_GET["sort"];
-$sortType = $_SESSION["itemSortType"];
+//$sortType = $_SESSION["itemSortType"];
 
 // function compareOwner($a, $b)
 // {
