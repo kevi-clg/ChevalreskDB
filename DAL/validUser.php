@@ -1,7 +1,7 @@
 <?php
 
-function isValidUser(){
-    if($_SESSION['ValidUser'] == true){
+function isvalidUser(){
+    if($_SESSION['validUser'] == true){
         return true;
     }
     return false;

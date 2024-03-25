@@ -43,6 +43,6 @@ function LoginJoueur($alias, $password)
         $_SESSION['Type'] = $login["typee"];
         $_SESSION['Demande'] = $login["demande"];
         $_SESSION['Password'] = $login["password"];
-        $_SESSION['ValidUser'] = true;
+        $_SESSION['validUser'] = true;
     }
 }

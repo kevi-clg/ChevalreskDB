@@ -45,7 +45,7 @@ function anonymousAccess($timeout = defaultTimeout)
 }
 function userAccess($timeout = defaultTimeout)
 {
-    if (!isset($_SESSION['ValidUser'])) {
+    if (!isset($_SESSION['validUser'])) {
         redirect('LoginForm.php');
     } else {
         set_Session_Timeout($timeout, 'LoginForm.php');
