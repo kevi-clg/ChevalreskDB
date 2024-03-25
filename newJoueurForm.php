@@ -69,7 +69,17 @@ $viewContent = <<<HTML
                         placeholder="Vérification" required
                         InvalidMessage="Ne correspond pas au mot de passe" />
             </fieldset>
-   
+            
+            <fieldset>
+                <legend>Avatar</legend>
+                <div class='imageUploader' 
+                        newImage='$newImage' 
+                        controlId='Avatar' 
+                        imageSrc='$avatar' 
+                        waitingImage="images/Loading_icon.gif">
+            </div>
+            </fieldset>
+            
             <input type='submit' name='submit' id='saveUser' value="Enregistrer" class="form-control btn-primary">
         </form>
         <div class="cancel">
