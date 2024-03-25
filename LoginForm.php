@@ -5,6 +5,8 @@ $viewTitle = "Création de compte";
 anonymousAccess();
 $newImage = true;
 $avatar = "images/no-avatar.png";
+$aliasError = isset($_SESSION['ErreurAlias'])? $_SESSION['ErreurAlias'] : '';
+$passwordError = isset($_SESSION['ErreurPassword'])? $_SESSION['ErreurPassword'] : '';
 $viewContent = <<<HTML
 
     <div class="content loginForm">
@@ -21,7 +23,7 @@ $viewContent = <<<HTML
                         RequireMessage = 'Veuillez entrer votre Alias'
                         InvalidMessage = 'Alias invalide'
                         CustomErrorMessage ="Cette alias est déjà utilisé"/>
-
+                        <span style='color:red'>$aliasError</span>
                 
             </fieldset>
             <fieldset>
@@ -33,12 +35,13 @@ $viewContent = <<<HTML
                         placeholder="Mot de passe" 
                         required 
                         RequireMessage = 'Veuillez entrer un mot de passe'/>
+                        <span style='color:red'>$passwordError</span>
             </fieldset>
    
             <input type='submit' name='submit' id='saveUser' value="Connecter" class="form-control btn-primary">
         </form>
         <div class="cancel">
-            <a href="loginForm.php">
+            <a href="newJoueurForm.php">
                 <button class="form-control btn-secondary">S'inscrire</button>
             </a>
         </div>

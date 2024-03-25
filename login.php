@@ -4,9 +4,17 @@ require 'DAL/functions.php';
 
 
 anonymousAccess();
-LoginJoueur($_POST['Alias'], $_POST['Password']);
-if($_SESSION['ValidUser'] == true)
-{
+unset($_SESSION['ErreurAlias']);
+unset($_SESSION['ErreurPassword']);
+
+if (CheckAlias(($_POST['Alias']))) {
+    LoginJoueur($_POST['Alias'], $_POST['Password']);
+}
+if ($_SESSION['ValidUser'] == true) {
     redirect('itemsList.php');
 }
-redirect('LoginForm.php'); 
+
+$_SESSION['ErreurAlias'] = "Alias Invalide";
+
+
+redirect('LoginForm.php');

@@ -5,6 +5,9 @@ $viewTitle = "Création de compte";
 anonymousAccess();
 $newImage = true;
 $avatar = "images/no-avatar.png";
+
+$AliasErrror = isset($_SESSION['ErreurDoublon'])? $_SESSION['ErreurDoublon'] : '';
+
 $viewContent = <<<HTML
 
     <div class="content loginForm">
@@ -21,7 +24,7 @@ $viewContent = <<<HTML
                         RequireMessage = 'Veuillez entrer votre Alias'
                         InvalidMessage = 'Alias invalide'
                         CustomErrorMessage ="Cette alias est déjà utilisé"/>
-
+                        <span style='color:red'>$AliasErrror</span>
                 
             </fieldset>
             
@@ -87,14 +90,3 @@ $viewScript = <<<HTML
         </script>
     HTML;
 include "views/master.php";
-
-
-/* <fieldset>
-<legend>Avatar</legend>
-<div class='imageUploader' 
-        newImage='$newImage' 
-        controlId='Avatar' 
-        imageSrc='$avatar' 
-        waitingImage="images/Loading_icon.gif">
-</div>
-</fieldset> */

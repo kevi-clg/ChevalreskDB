@@ -1,14 +1,19 @@
 <?php
 
-
 function Create_Joueur($alias, $prenom, $nom, $password)
 {
-    try {
-        $conn = new PDO('mysql:host=localhost;dbname=dbchevalersk18',"root", "");
-        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    } catch (Throwable $th) {
-        throw new PDOException($th->getMessage()) ;
-    }
+    $host = 'localhost';
+    $db = 'dbchevalersk18';
+    $user = 'root';
+    $password = '';
+    $charset = 'utf8';
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+   try {
+       $conn = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+   } catch (\Throwable $th) {
+       throw new PDOException($th->getMessage());
+   }
+
     $stmt = $conn->prepare('CALL AjouterJoueur(:alias, :prenom, :nom, :password)');
     
     $stmt->bindParam(':alias', $alias);
@@ -21,12 +26,18 @@ function Create_Joueur($alias, $prenom, $nom, $password)
 
 function LoginJoueur($alias, $password)
 {
-    try {
-        $conn = new PDO('mysql:host=localhost;dbname=dbchevalersk18',"root", "");
-        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    } catch (Throwable $th) {
-        throw new PDOException($th->getMessage()) ;
-    }
+    $host = 'localhost';
+    $db = 'dbchevalersk18';
+    $user = 'root';
+    $password = '';
+    $charset = 'utf8';
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+   try {
+       $conn = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+   } catch (\Throwable $th) {
+       throw new PDOException($th->getMessage());
+   }
+
     $stmt = $conn->prepare('CALL LoginJoueur(:alias, :password)');
     $stmt->bindParam(':alias', $alias);
     $stmt->bindParam(':password', $password);
@@ -43,6 +54,37 @@ function LoginJoueur($alias, $password)
         $_SESSION['Type'] = $login["typee"];
         $_SESSION['Demande'] = $login["demande"];
         $_SESSION['Password'] = $login["password"];
-        $_SESSION['ValidUser'] = true;
+        $_SESSION['validUser'] = true;
+    }
+    else
+    {
+        $_SESSION['ErreurPassword'] = "Mot de Passe Invalide";
+    }
+}
+function CheckAlias($alias)
+{
+    $host = 'localhost';
+    $db = 'dbchevalersk18';
+    $user = 'root';
+    $password = '';
+    $charset = 'utf8';
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+   try {
+       $conn = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+   } catch (\Throwable $th) {
+       throw new PDOException($th->getMessage());
+   }
+
+    $stmt = $conn->prepare('CALL CheckAlias(:alias)');
+    $stmt->bindParam(':alias', $alias);
+    $stmt->execute();
+    $login = $stmt->fetch();
+    if($login[0])
+    {
+        return true;   
+    }
+    else
+    {
+        return false;
     }
 }
