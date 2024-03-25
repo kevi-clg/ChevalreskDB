@@ -34,6 +34,7 @@
     background-color: rgb(239, 239, 239);
 }
 
+
 #header {
     border: 1px solid #ccc;
     border-radius: .25em;
@@ -61,13 +62,14 @@
     scrollbar-width: thin;
     scrollbar-gutter: stable;
     /*scroll-snap-type: y mandatory*/;
-    background-color: white;
+    background-color: #787ee9;
     padding-bottom: 8px;
 }
 
 .viewTitle {
     font-size: 20px;
     font-weight: bold;
+    color: #706d7a;
 }
 
 .waitingGifcontainer {
@@ -199,6 +201,7 @@ fieldset {
     padding-left: 12px;
     padding-right: 12px;
     padding-top: -10px !important;
+    background-color: #ffffff;
     margin-bottom: 32px;
 }
 
