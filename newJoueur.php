@@ -6,7 +6,7 @@ require 'DAL/functions.php';
 anonymousAccess();
 unset($_SESSION['ErreurDoublon']);
 if (!CheckAlias(($_POST['Alias']))) {
-    Create_Joueur($_POST['Alias'], $_POST['Prenom'], $_POST['Nom'], $_POST['Password']);
+    Create_Joueur($_POST['Alias'], $_POST['Prenom'], $_POST['Nom'], $_POST['Password'], $_POST['Avatar']);
 }
 else
 {

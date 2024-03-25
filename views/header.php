@@ -36,6 +36,10 @@ if (isset($_SESSION["validUser"])) {
         </a> -->
         <div class="dropdown-divider"></div>
     HTML;
+
+    $connectedUserAvatar = <<<HTML
+        <div class="UserAvatarSmall" style="background-image:url('$avatar')" title="$userName"></div>
+    HTML;
 } else {
     $loggedUserMenu = <<<HTML
         <a href="loginForm.php" class="dropdown-item" id="loginCmd">

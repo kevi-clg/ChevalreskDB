@@ -1,7 +1,8 @@
 <?php
 
-function Create_Joueur($alias, $prenom, $nom, $password)
+function Create_Joueur($alias, $prenom, $nom, $motdepasse, $avatar)
 {
+    $avatar= 'data/images/'. $avatar;
     $host = 'localhost';
     $db = 'dbchevalersk18';
     $user = 'root';
@@ -9,18 +10,18 @@ function Create_Joueur($alias, $prenom, $nom, $password)
     $charset = 'utf8';
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
    try {
-       $conn = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+       $conn = new PDO($dsn, $user, $motdepasse, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
    } catch (\Throwable $th) {
        throw new PDOException($th->getMessage());
    }
 
-    $stmt = $conn->prepare('CALL AjouterJoueur(:alias, :prenom, :nom, :password)');
+    $stmt = $conn->prepare('CALL AjouterJoueur(:alias, :prenom, :nom, :password, :avatar)');
     
     $stmt->bindParam(':alias', $alias);
     $stmt->bindParam(':prenom', $prenom);
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':password', $password);
-
+    $stmt->bindParam(':avatar', $avatar);
         $stmt->execute();
 }
 
@@ -55,6 +56,7 @@ function LoginJoueur($alias, $motdepasse)
         $_SESSION['Demande'] = $login["demande"];
         $_SESSION['Password'] = $login["password"];
         $_SESSION['validUser'] = true;
+        $_SESSION['photo'] = $login["avatar"];
     }
     else
     {
