@@ -10,7 +10,7 @@ function Create_Joueur($alias, $prenom, $nom, $motdepasse, $avatar)
     $charset = 'utf8';
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
    try {
-       $conn = new PDO($dsn, $user, $motdepasse, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+       $conn = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
    } catch (\Throwable $th) {
        throw new PDOException($th->getMessage());
    }
@@ -20,7 +20,7 @@ function Create_Joueur($alias, $prenom, $nom, $motdepasse, $avatar)
     $stmt->bindParam(':alias', $alias);
     $stmt->bindParam(':prenom', $prenom);
     $stmt->bindParam(':nom', $nom);
-    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':password', $motdepasse);
     $stmt->bindParam(':avatar', $avatar);
         $stmt->execute();
 }
