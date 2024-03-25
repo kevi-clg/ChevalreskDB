@@ -7,7 +7,7 @@ anonymousAccess();
 unset($_SESSION['ErreurAlias']);
 unset($_SESSION['ErreurPassword']);
 
-if (CheckAlias(($_POST['Alias']))) {
+if (CheckAlias(($_POST['Alias']))== true) {
     LoginJoueur($_POST['Alias'], $_POST['Password']);
 }
 if ($_SESSION['validUser'] == true) {

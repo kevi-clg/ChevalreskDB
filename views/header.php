@@ -12,8 +12,11 @@ $connectedUserAvatar = "";
 
 if (isset($_SESSION["validUser"])) {
 
+
     $avatar = $_SESSION["photo"];
     $userName = $_SESSION["Alias"];
+
+
     $loggedUserMenu = "";
     if (isset($_SESSION["isAdmin"]) && (bool) $_SESSION["isAdmin"]) {
         $loggedUserMenu = <<<HTML
@@ -32,12 +35,6 @@ if (isset($_SESSION["validUser"])) {
             <i class="menuIcon fa fa-user-edit mx-2"></i> Modifier votre profil
         </a>
         <div class="dropdown-divider"></div>
-        <a href="photosList.php" class="dropdown-item">
-            <i class="menuIcon fa fa-image mx-2"></i> Liste des photos
-        </a>
-    HTML;
-    $connectedUserAvatar = <<<HTML
-        <div class="UserAvatarSmall" style="background-image:url('$avatar')" title="$userName"></div>
     HTML;
 } else {
     $loggedUserMenu = <<<HTML
