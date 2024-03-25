@@ -24,7 +24,7 @@ function Create_Joueur($alias, $prenom, $nom, $password)
         $stmt->execute();
 }
 
-function LoginJoueur($alias, $password)
+function LoginJoueur($alias, $motdepasse)
 {
     $host = 'localhost';
     $db = 'dbchevalersk18';
@@ -40,11 +40,11 @@ function LoginJoueur($alias, $password)
 
     $stmt = $conn->prepare('CALL LoginJoueur(:alias, :password)');
     $stmt->bindParam(':alias', $alias);
-    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':password', $motdepasse);
 
     $stmt->execute();
     $login = $stmt->fetch();
-    if($login[0])
+    if($login['alias'])
     {
         $_SESSION['Id'] = $login["idJoueur"];
         $_SESSION['Alias'] = $login["alias"];
@@ -79,7 +79,7 @@ function CheckAlias($alias)
     $stmt->bindParam(':alias', $alias);
     $stmt->execute();
     $login = $stmt->fetch();
-    if($login[idJoueur])
+    if($login['idJoueur'])
     {
         return true;   
     }
