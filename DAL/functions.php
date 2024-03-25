@@ -79,7 +79,7 @@ function CheckAlias($alias)
     $stmt->bindParam(':alias', $alias);
     $stmt->execute();
     $login = $stmt->fetch();
-    if($login[0])
+    if($login[idJoueur])
     {
         return true;   
     }
