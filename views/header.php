@@ -12,7 +12,7 @@ $connectedUserAvatar = "";
 
 if (isset($_SESSION["validUser"])) {
 
-    $userName = $_SESSION["userName"];
+    $userName = $_SESSION["Alias"];
     $loggedUserMenu = "";
     if (isset($_SESSION["isAdmin"]) && (bool) $_SESSION["isAdmin"]) {
         $loggedUserMenu = <<<HTML
@@ -27,9 +27,9 @@ if (isset($_SESSION["validUser"])) {
         <a href="logout.php" class="dropdown-item">
             <i class="menuIcon fa fa-sign-out mx-2"></i> Déconnexion
         </a>
-        <a href="editProfilForm.php" class="dropdown-item">
+        <!-- <a href="editProfilForm.php" class="dropdown-item">
             <i class="menuIcon fa fa-user-edit mx-2"></i> Modifier votre profil
-        </a>
+        </a> -->
         <div class="dropdown-divider"></div>
     HTML;
 } else {
