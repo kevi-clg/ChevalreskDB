@@ -12,7 +12,11 @@ $connectedUserAvatar = "";
 
 if (isset($_SESSION["validUser"])) {
 
+
+    $avatar = $_SESSION["photo"];
     $userName = $_SESSION["Alias"];
+
+
     $loggedUserMenu = "";
     if (isset($_SESSION["isAdmin"]) && (bool) $_SESSION["isAdmin"]) {
         $loggedUserMenu = <<<HTML
