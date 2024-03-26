@@ -6,7 +6,6 @@ include_once 'php/imageFiles.php';
 anonymousAccess();
 unset($_SESSION['ErreurDoublon']);
 
-"data/images/avatars/";
 
 $avatar = saveImage("data/images/avatars/", $_POST['Avatar']);
 
