@@ -2,7 +2,6 @@
 
 function Create_Joueur($alias, $prenom, $nom, $motdepasse, $avatar)
 {
-    $avatar= 'data/images/'. $avatar;
     $host = 'localhost';
     $db = 'dbchevalersk18';
     $user = 'root';

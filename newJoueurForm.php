@@ -73,7 +73,6 @@ $viewContent = <<<HTML
             <fieldset>
                 <legend>Avatar</legend>
                 <div class='imageUploader' 
-                        newImage='$newImage' 
                         controlId='Avatar' 
                         imageSrc='$avatar' 
                         waitingImage="images/Loading_icon.gif">
