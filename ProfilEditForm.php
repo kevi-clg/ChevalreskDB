@@ -1,30 +1,31 @@
 <?php
 require 'php/sessionManager.php';
-$viewTitle = "Création de compte";
+$viewTitle = "Modification de profile";
 
 anonymousAccess();
-$newImage = true;
-$avatar = "images/no-avatar.png";
 
-$AliasErrror = isset($_SESSION['ErreurAliasEdit'])? $_SESSION['ErreurAliasEdit'] : '';
+$Alias = $_SESSION['Alias'];
+$Prenom= $_SESSION['Prenom'];
+$Nom = $_SESSION['Nom'];
+$MotdePasse = $_SESSION['Password'];
+$photo = $_SESSION['photo']; 
 
 $viewContent = <<<HTML
 
     <div class="content loginForm">
         <br>
-        <form method='post' action='newJoueur.php'>
+        <form method='post' action='EditJoueur.php'>
         <fieldset>
                 <legend>Alias</legend>
                 <input  type="text" 
                         class="form-control" 
                         name="Alias" 
                         id="Alias"
-                        placeholder="Alias" 
+                        placeholder="Alias"
+                        value = $Alias
                         required 
                         RequireMessage = 'Veuillez entrer votre Alias'
-                        InvalidMessage = 'Alias invalide'
-                        CustomErrorMessage ="Cette alias est déjà utilisé"/>
-                        <span style='color:red'>$AliasErrror</span>
+                        InvalidMessage = 'Alias invalide'/>
                 
             </fieldset>
             
@@ -35,6 +36,7 @@ $viewContent = <<<HTML
                         name="Nom" 
                         id="Nom"
                         placeholder="Nom" 
+                        value = $Nom
                         required 
                         RequireMessage = 'Veuillez entrer votre nom'
                         InvalidMessage = 'Nom invalide'/>
@@ -46,6 +48,7 @@ $viewContent = <<<HTML
                         name="Prenom" 
                         id="Prenom"
                         placeholder="Prénom" 
+                        value = $Prenom
                         required 
                         RequireMessage = 'Veuillez entrer votre prénom'
                         InvalidMessage = 'Prénom invalide'/>
@@ -57,15 +60,18 @@ $viewContent = <<<HTML
                         name="Password" 
                         id="Password"
                         placeholder="Mot de passe" 
+                        value = $MotdePasse
                         required 
                         RequireMessage = 'Veuillez entrer un mot de passe'
                         InvalidMessage = 'Mot de passe trop court'/>
 
+                        
                 <input  class="form-control MatchedInput" 
                         type="password" 
                         matchedInputId="Password"
                         name="matchedPassword" 
                         id="matchedPassword" 
+                        value = $MotdePasse
                         placeholder="Vérification" required
                         InvalidMessage="Ne correspond pas au mot de passe" />
             </fieldset>
@@ -74,7 +80,7 @@ $viewContent = <<<HTML
                 <legend>Avatar</legend>
                 <div class='imageUploader' 
                         controlId='Avatar' 
-                        imageSrc='$avatar' 
+                        imageSrc='$photo' 
                         waitingImage="images/Loading_icon.gif">
             </div>
             </fieldset>
@@ -82,8 +88,8 @@ $viewContent = <<<HTML
             <input type='submit' name='submit' id='saveUser' value="Enregistrer" class="form-control btn-primary">
         </form>
         <div class="cancel">
-            <a href="loginForm.php">
-                <button class="form-control btn-secondary">Se Connecter</button>
+            <a href="ProfileList.php">
+                <button class="form-control btn-secondary">Retour</button>
             </a>
         </div>
 

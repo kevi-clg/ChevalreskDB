@@ -35,6 +35,9 @@ if (isset($_SESSION["validUser"])) {
             <i class="menuIcon fa fa-user-edit mx-2"></i> Modifier votre profil
         </a> -->
         <div class="dropdown-divider"></div>
+        <a href="itemsList.php" class="dropdown-item">
+            <i class="menuIcon fa fa-sign-out mx-2"></i> Liste d'items
+        </a>
     HTML;
 
     $connectedUserAvatar = <<<HTML
@@ -45,6 +48,10 @@ if (isset($_SESSION["validUser"])) {
         <a href="loginForm.php" class="dropdown-item" id="loginCmd">
             <i class="menuIcon fa fa-sign-in mx-2"></i> Connexion
         </a> 
+        <div class="dropdown-divider"></div>
+        <a href="itemsList.php" class="dropdown-item">
+            <i class="menuIcon fa fa-sign-out mx-2"></i> Liste d'items
+        </a>
     HTML;
     $connectedUserAvatar = <<<HTML
         <div>&nbsp;</div>
@@ -116,7 +123,7 @@ $viewHead = <<<HTML
         
         <div class="headerMenusContainer">
             <span>&nbsp</span> <!--filler-->
-            <a href="editProfilForm.php" title="Modifier votre profil"> $connectedUserAvatar </a>         
+            <a href="ProfileList.php" title="Modifier votre profil"> $connectedUserAvatar </a>         
             <div class="dropdown ms-auto dropdownLayout">
                 <div data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="cmdIcon fa fa-ellipsis-vertical"></i>
