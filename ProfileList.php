@@ -11,6 +11,8 @@ $viewContent = <<<HTML
     <li>Prénom: {$_SESSION['Prenom']}</li>
     <li>Nom: {$_SESSION['Nom']}</li>
     <li>Solde: {$_SESSION['Solde']}</li>
+    <li>Niveau: {$_SESSION['Niveau']}</li>
+    <li>Type: {$_SESSION['Type']}</li>
     <li>Mot de passe: {$_SESSION['Password']}</li>
     <li>Photo: <img src="{$_SESSION['photo']}" alt="Avatar"></li>
 </ul>

@@ -52,6 +52,7 @@ function LoginJoueur($alias, $motdepasse)
         $_SESSION['Nom'] = $login["nom"];
         $_SESSION['Solde'] = $login["solde"];
         $_SESSION['Type'] = $login["typee"];
+        $_SESSION['Niveau'] = $login["niveau"];
         $_SESSION['Demande'] = $login["demande"];
         $_SESSION['Password'] = $login["password"];
         $_SESSION['validUser'] = true;
