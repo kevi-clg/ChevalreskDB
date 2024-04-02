@@ -8,9 +8,7 @@ include_once 'DAL/validUser.php';
 $viewName = "itemList";
 //userAccess();
 $viewTitle = "items";
-if(!isvalidUser()){
-    redirect("LoginForm.php");
-}
+
 
 $viewContent = "<div class='itemsLayout'>";
 //$isAdmin = (bool) $_SESSION["isAdmin"];

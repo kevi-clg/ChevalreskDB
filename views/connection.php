@@ -9,7 +9,7 @@ $host = 'localhost';
 
     try {
         $conn = new PDO($dsn,$user,$password,[PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC]);
-        echo "connexion établie <br>";
+        //echo "connexion établie <br>";
     } catch (\Throwable $th) {
         throw new PDOException($th->getMessage()) ;
     }

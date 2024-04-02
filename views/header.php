@@ -6,6 +6,8 @@ if (!isset($viewHeadCustom))
     $viewHeadCustom = "";
 if (!isset($viewName))
     $viewName = "";
+if(!isset($searchBar))
+    $searchBar = "";
 
 $loggedUserMenu = "";
 $connectedUserAvatar = "";
@@ -122,7 +124,9 @@ $viewHead = <<<HTML
         </span>
         
         <div class="headerMenusContainer">
-            <span>&nbsp</span> <!--filler-->
+            <span></span> <!--filler-->
+            <a href="panier.php"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a>
+            
             <a href="ProfileList.php" title="Modifier votre profil"> $connectedUserAvatar </a>         
             <div class="dropdown ms-auto dropdownLayout">
                 <div data-bs-toggle="dropdown" aria-expanded="false">
