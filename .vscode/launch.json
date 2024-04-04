@@ -11,7 +11,7 @@
             "request": "launch",
             "runtimeArgs": [
                 "-S",
-                "localhost:8080/Chevalresk/newJoueurForm.php",
+                "localhost:8080/Chevalresk/itemsList.php",
                 "-t",
                 "."
             ],

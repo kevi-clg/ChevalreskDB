@@ -1,3 +1,5 @@
+
+
 <?php
 $pageTitle = "Chevalresk";
 if (!isset($viewTitle))
@@ -6,11 +8,29 @@ if (!isset($viewHeadCustom))
     $viewHeadCustom = "";
 if (!isset($viewName))
     $viewName = "";
-if(!isset($searchBar))
-    $searchBar = "";
+
+if(!isset($itemListPage))
+    $itemListPage = false;
 
 $loggedUserMenu = "";
 $connectedUserAvatar = "";
+
+if($itemListPage){
+    $searchBar = <<<HTML
+        <div class="dropdown">
+            <button class="dropbtn">Filtres</button>
+            <div class="dropdown-content">
+            <label><input type="checkbox" id="option1" value="Armes" onchange="handleChange()">Arme</label>
+            <label><input type="checkbox" id="option2" value="Armures" onchange="handleChange()">Armure</label>
+            <label><input type="checkbox" id="option3" value="Éléments" onchange="handleChange()">Élément</label>
+            <label><input type="checkbox" id="option4" value="Potions" onchange="handleChange()">Potion</label>
+            </div>
+        </div>
+    HTML;
+}
+else{
+    $searchBar = "";
+}
 
 if (isset($_SESSION["validUser"])) {
 
@@ -63,68 +83,17 @@ if (isset($_SESSION["validUser"])) {
 
 
 $viewMenu = "";
-if (strcmp($viewName, "photoList") == 0) {
-    $sortType = isset($_SESSION["photoSortType"]) ? $_SESSION["photoSortType"] : "date";
-    $checkIcon = '<i class="menuIcon fa fa-check mx-2"></i>';
-    $uncheckIcon = '<i class="menuIcon fa fa-fw mx-2"></i>';
-    $sortByDateCheck = ($sortType == "date") ? $checkIcon : $uncheckIcon;
-    $sortByLikeCheck = ($sortType == "likes") ? $checkIcon : $uncheckIcon;
-    $sortByOwners = ($sortType == "owners") ? $checkIcon : $uncheckIcon;
-    $sortByKeywords = ($sortType == "keywords") ? $checkIcon : $uncheckIcon;
-    $ownerOnly = ($sortType == "owner") ? $checkIcon : $uncheckIcon;
-    $viewMenu = <<<HTML
-         <a href="photosList.php?sort=date" class="dropdown-item">
-            $sortByDateCheck <i class="menuIcon fa fa-calendar mx-2"></i>Photos par date de création
-         </a>
-         <a href="photosList.php?sort=likes" class="dropdown-item">
-            $sortByLikeCheck <i class="menuIcon fa fa-heart mx-2"></i>Photos les plus aimées
-         </a>
-         <a href="photosList.php?sort=keywords" class="dropdown-item">
-            $sortByKeywords <i class="menuIcon fa fa-search mx-2"></i>Photos par mots-clés
-         </a> 
-         <a href="photosList.php?sort=owners" class="dropdown-item">
-            $sortByOwners <i class="menuIcon fa fa-users mx-2"></i>Photos par créateur
-         </a>
-         <a href="photosList.php?sort=owner" class="dropdown-item">
-            $ownerOnly <i class="menuIcon fa fa-user mx-2"></i>Mes photos
-         </a>
-        HTML;
-    if ($sortType == "owners") {
-        $options = "";
-        foreach($userList as $userCombo){
-            $options2 = <<<HTML
-            <option value="0">$userCombo</option>
-            HTML;
-            $options .= $options2;
-        }
-        $viewHeadCustom = <<<HTML
-            <div class="searchContainer">
-                <select class="form-select userSelector" id="userSelector"> 
-                    <option value="0"> Tous les usagers</option>
-                    $options
-                </select>
-                <i class="cmdIcon fa fa-search" id="setPhotoOwnerSearchIdCmd"></i>
-            </div>
-        HTML;
-    }
-    if ($sortType == "keywords") {
-        $viewHeadCustom = <<<HTML
-           <div class="searchContainer">
-                <input type="search" class="form-control" placeholder="Recherche par mots-clés" id="keywords" />
-                <i class="cmdIcon fa fa-search" id="setSearchKeywordsCmd"></i>
-            </div>
-        HTML;
-    }
-}
+
 
 $viewHead = <<<HTML
         <a href="itemsList.php" title="Accueil"><img src="images/ChevalreskLogo.png" class="appLogo"></a>
-        <span class="viewTitle">$viewTitle 
-            <a href="newPhotoForm.php" class="cmdIcon fa fa-plus" id="addPhotoCmd" title="Ajouter une photo"></a>
+        <span class="viewTitle">
+            $viewTitle   
         </span>
         
         <div class="headerMenusContainer">
-            <span></span> <!--filler-->
+            <span></span><!--filler-->
+            <span>$searchBar</span> 
             <a href="panier.php"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a>
             
             <a href="ProfileList.php" title="Modifier votre profil"> $connectedUserAvatar </a>         

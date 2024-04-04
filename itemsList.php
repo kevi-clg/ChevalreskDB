@@ -4,11 +4,12 @@ include 'php/formUtilities.php';
 include 'php/date.php';
 include 'views/connection.php';
 include_once 'DAL/validUser.php';
+include_once 'DAL/fonctionRecherche.php';
 
 $viewName = "itemList";
 //userAccess();
 $viewTitle = "items";
-
+$itemListPage = true;
 
 $viewContent = "<div class='itemsLayout'>";
 //$isAdmin = (bool) $_SESSION["isAdmin"];
@@ -30,6 +31,12 @@ $list = [];
 $stmt = $conn->query("call selectAllItems()");
 while ($row = $stmt->fetch()) {
     array_push($list, $row);
+}
+
+if($result != ""){
+    while ($row = $result->fetch()) {
+        array_push($list, $row);
+    }
 }
 
 ##itemDetails.php?id=$id
