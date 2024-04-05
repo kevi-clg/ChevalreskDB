@@ -10,40 +10,38 @@ $viewName = "itemList";
 //userAccess();
 $viewTitle = "items";
 $itemListPage = true;
-
+$filtre = "";
+if(isset($_GET['filtres'])){
+    $filtre = $_GET['filtres'];
+}
 $viewContent = "<div class='itemsLayout'>";
-//$isAdmin = (bool) $_SESSION["isAdmin"];
-$owneritems = false;
-if (isset ($_GET["sort"]))
-    $_SESSION["itemSortType"] = $_GET["sort"];
-//$sortType = $_SESSION["itemSortType"];
-
-// function compareOwner($a, $b)
-// {
-//     $ownerName_A = no_Hyphens(UsersTable()->get($a->OwnerId)->Name);
-//     $ownerName_B = no_Hyphens(UsersTable()->get($b->OwnerId)->Name);
-//     return strcmp($ownerName_A, $ownerName_B);
-// } 
-//faire le meme avec type
 
 $list = [];
 
-$stmt = $conn->query("call selectAllItems()");
-while ($row = $stmt->fetch()) {
-    array_push($list, $row);
-}
 
-if($result != ""){
-    while ($row = $result->fetch()) {
+
+
+if ($filtre != null) {
+
+
+    $stmt = $conn->query("SELECT * from Items where typee in (" . $filtre . ")");
+
+    while ($row = $stmt->fetch()) {
         array_push($list, $row);
     }
+} else {
+    $stmt = $conn->query("call selectAllItems()");
+    while ($row = $stmt->fetch()) {
+        array_push($list, $row);
+    }
+    
 }
 
 ##itemDetails.php?id=$id
 
 foreach ($list as $item) {
 
-    
+
     $id = $item["idItem"];
     $nom = $item['nom'];
     $image = "data/images/items/" . $item['photo'];

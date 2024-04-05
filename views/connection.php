@@ -13,3 +13,4 @@ $host = 'localhost';
     } catch (\Throwable $th) {
         throw new PDOException($th->getMessage()) ;
     }
+

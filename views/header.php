@@ -20,10 +20,11 @@ if($itemListPage){
         <div class="dropdown">
             <button class="dropbtn">Filtres</button>
             <div class="dropdown-content">
-            <label><input type="checkbox" id="option1" value="Armes" onchange="handleChange()">Arme</label>
-            <label><input type="checkbox" id="option2" value="Armures" onchange="handleChange()">Armure</label>
-            <label><input type="checkbox" id="option3" value="Éléments" onchange="handleChange()">Élément</label>
-            <label><input type="checkbox" id="option4" value="Potions" onchange="handleChange()">Potion</label>
+            <label><input type="checkbox" id="option1" value="Arme" onchange="handleChange()">Armes</label>
+            <label><input type="checkbox" id="option2" value="Armure" onchange="handleChange()">Armures</label>
+            <label><input type="checkbox" id="option3" value="Élément" onchange="handleChange()">Éléments</label>
+            <label><input type="checkbox" id="option4" value="Potion" onchange="handleChange()">Potions</label>
+            <button onclick="Refresh()">Appliquer</button>
             </div>
         </div>
     HTML;

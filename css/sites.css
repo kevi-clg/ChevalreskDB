@@ -276,6 +276,7 @@ div2,a2,i2, span2 {
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1;
+    text-align: center;
   }
   
   /* Style the dropdown content label and checkbox */
