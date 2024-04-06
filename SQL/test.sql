@@ -54,17 +54,17 @@ INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('potion de resurection
 INSERT INTO potions (id,effect,duree,type) VALUES (15,'vous ramene a la vie',20,'potions')
 
 /*table Elements*/
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'éléments',,'data/images/items/')
-INSERT INTO éléments () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('dent de dragon',8,'éléments',153.4,'data/images/items/elements.png')
+INSERT INTO éléments (id,type,rarete,dangerosite) VALUES (16,'éléments',5,10)
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'éléments',,'data/images/items/')
-INSERT INTO éléments () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('larme de licorne',3,'éléments',250.3,'data/images/items/elements.png')
+INSERT INTO éléments (id,type,rarete,dangerosite) VALUES (17,'éléments',5,1)
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'éléments',,'data/images/items/')
-INSERT INTO éléments () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('poil de loup',32,'éléments',43.2,'data/images/items/elements.png')
+INSERT INTO éléments (id,type,rarete,dangerosite) VALUES (18,'éléments',1,3)
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'éléments',,'data/images/items/')
-INSERT INTO éléments () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('sang de liche',11,'éléments',99.4,'data/images/items/elements.png')
+INSERT INTO éléments (id,type,rarete,dangerosite) VALUES (19,'éléments',2,4)
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'éléments',,'data/images/items/')
-INSERT INTO éléments () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('poudre d os de mort vivant',26,'éléments',53.2,'data/images/items/elements.png')
+INSERT INTO éléments (id,type,rarete,dangerosite) VALUES (20,'éléments',4,4)
