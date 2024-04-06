@@ -6,11 +6,56 @@ INSERT INTO joueurs (alias, prenom, nom, password, avatar) VALUES ('Prof_cool103
 INSERT INTO joueurs (alias, prenom, nom, password, avatar) VALUES ('Wilson23', 'Tom', 'Hanks', 'password', 'data/images/avatars/Ballon-Icon- 092550.png')
 
 /*table Armes*/
+INSERT INTO items () VALUES ()
+INSERT INTO armes () VALUES ()
 
+INSERT INTO items () VALUES ()
+INSERT INTO armes () VALUES ()
+
+INSERT INTO items () VALUES ()
+INSERT INTO armes () VALUES ()
+
+INSERT INTO items () VALUES ()
+INSERT INTO armes () VALUES ()
+
+INSERT INTO items () VALUES ()
+INSERT INTO armes () VALUES ()
 
 /*table Armures*/
+INSERT INTO items () VALUES ()
+INSERT INTO armures () VALUES ()
 
+INSERT INTO items () VALUES ()
+INSERT INTO armures () VALUES ()
+
+INSERT INTO items () VALUES ()
+INSERT INTO armures () VALUES ()
+
+INSERT INTO items () VALUES ()
+INSERT INTO armures () VALUES ()
+
+INSERT INTO items () VALUES ()
+INSERT INTO armures () VALUES ()
 
 /*table Potions*/
+INSERT INTO items () VALUES ()
+INSERT INTO potions () VALUES ()
+
+INSERT INTO items () VALUES ()
+INSERT INTO potions () VALUES ()
+
+INSERT INTO items () VALUES ()
+INSERT INTO potions () VALUES ()
+
+INSERT INTO items () VALUES ()
+INSERT INTO potions () VALUES ()
+
+INSERT INTO items () VALUES ()
+INSERT INTO potions () VALUES ()
 
 /*table Elements*/
+INSERT INTO éléments () VALUES ()
+INSERT INTO éléments () VALUES ()
+INSERT INTO éléments () VALUES ()
+INSERT INTO éléments () VALUES ()
+INSERT INTO éléments () VALUES ()
