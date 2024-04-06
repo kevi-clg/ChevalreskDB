@@ -22,49 +22,49 @@ INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('hache',,'armes',,'dat
 INSERT INTO armes (id,efficacite,genre,descriptionArme) VALUES (5,5,1,'une arme puissante')
 
 /*table Armures*/
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
-INSERT INTO armures () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('casque',32,'armures',15.6,'data/images/items/armure.png')
+INSERT INTO armures (id,matiere,taille) VALUES (6,'mithril','s')
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
-INSERT INTO armures () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('plastron',23,'armures',12.6,'data/images/items/armure.png')
+INSERT INTO armures (id,matiere,taille) VALUES (7,'acier','m')
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
-INSERT INTO armures () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('jambiere',12,'armures',14.7,'data/images/items/armure.png')
+INSERT INTO armures (id,matiere,taille) VALUES (8,'or','x')
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
-INSERT INTO armures () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('botte',30,'armures',12.3,'data/images/items/armure.png')
+INSERT INTO armures (id,matiere,taille) VALUES (9,'bronze','l')
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
-INSERT INTO armures () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('bracelet',28,'armures',18.4,'data/images/items/armure.png')
+INSERT INTO armures (id,matiere,taille) VALUES (10,'diamant','s')
 
 /*table Potions*/
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
-INSERT INTO potions () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('potion de force',10,'potions',15.5,'data/images/items/potion.png')
+INSERT INTO potions (id,effect,duree,type) VALUES (11,'vous donne de la force',23,'potions')
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
-INSERT INTO potions () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('potion de vitesse',11,'potions',15.5,'data/images/items/potion.png')
+INSERT INTO potions (id,effect,duree,type) VALUES (12,'vous donne de la vitesse',12,'potions')
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
-INSERT INTO potions () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('potion de jump',13,'potions',15.5,'data/images/items/potion.png')
+INSERT INTO potions (id,effect,duree,type) VALUES (13,'vous permet de sauter plus haut',11,'potions')
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
-INSERT INTO potions () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('poison',12,'potions',15.5,'data/images/items/potion.png')
+INSERT INTO potions (id,effect,duree,type) VALUES (14,'ceci est un poison',9,'potions')
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
-INSERT INTO potions () VALUES ()
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('potion de resurection',14,'potions',115.5,'data/images/items/potion.png')
+INSERT INTO potions (id,effect,duree,type) VALUES (15,'vous ramene a la vie',20,'potions')
 
 /*table Elements*/
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'éléments',,'data/images/items/')
 INSERT INTO éléments () VALUES ()
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'éléments',,'data/images/items/')
 INSERT INTO éléments () VALUES ()
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'éléments',,'data/images/items/')
 INSERT INTO éléments () VALUES ()
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'éléments',,'data/images/items/')
 INSERT INTO éléments () VALUES ()
 
-INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'',,'data/images/items/')
+INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('',,'éléments',,'data/images/items/')
 INSERT INTO éléments () VALUES ()
