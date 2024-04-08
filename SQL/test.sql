@@ -19,19 +19,19 @@ INSERT INTO joueurs (alias, prenom, nom, password, avatar) VALUES ('Wilson23', '
 /*table Armes*/
 Delete From armes;
 INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('Lance', 10, 'Arme', 14, 'lance-115623.png');
-INSERT INTO armes (id,efficacite,genre,description) VALUES (1,3,1, 'arme tres equilibrer avec une parfaite areodynamique magnifiant vos lancer');
+INSERT INTO armes (id,efficacite,genre,	descriptionArme) VALUES (1,3,1, 'arme tres equilibrer avec une parfaite areodynamique magnifiant vos lancer');
 
 INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('epee', 25,'Arme',22,'epee.png');
-INSERT INTO armes (id,efficacite,genre,description) VALUES (2,4,1,'une arme pour un roi');
+INSERT INTO armes (id,efficacite,genre,	descriptionArme) VALUES (2,4,1,'une arme pour un roi');
 
 INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('bouclier',10,'Arme',5,'bouclier.png');
-INSERT INTO armes (id,efficacite,genre,description) VALUES (3,0,1,'pas tres utile pour attaquer mais pour bloquer c est parfait');
+INSERT INTO armes (id,efficacite,genre,	descriptionArme) VALUES (3,0,1,'pas tres utile pour attaquer mais pour bloquer c est parfait');
 
 INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('dague',43,'Arme',3,'dague.png');
-INSERT INTO armes (id,efficacite,genre,description) VALUES (4,1,1,'une arme sournoise pour des personne sournois');
+INSERT INTO armes (id,efficacite,genre,	descriptionArme) VALUES (4,1,1,'une arme sournoise pour des personne sournois');
 
 INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('hache',12,'Arme',10,'hache.png');
-INSERT INTO armes (id,efficacite,genre,description) VALUES (5,5,1,'une arme puissante');
+INSERT INTO armes (id,efficacite,genre,	descriptionArme) VALUES (5,5,1,'une arme puissante');
 
 /*table Armures*/
 INSERT INTO items (nom,quantite,typee,prix,photo) VALUES ('casque',32,'Armure',15,'armure.png');
