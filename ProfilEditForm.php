@@ -81,6 +81,7 @@ $viewContent = <<<HTML
                 <div class='imageUploader' 
                         controlId='Avatar' 
                         imageSrc='$photo' 
+                        value='$photo'
                         waitingImage="images/Loading_icon.gif">
             </div>
             </fieldset>
