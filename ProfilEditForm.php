@@ -83,6 +83,7 @@ $viewContent = <<<HTML
                         imageSrc='$photo' 
                         placeholder='$photo'
                         value='$photo'
+                        placeholder='$photo'
                         waitingImage="images/Loading_icon.gif">
             </div>
             </fieldset>
