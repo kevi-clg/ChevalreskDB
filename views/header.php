@@ -1,5 +1,3 @@
-
-
 <?php
 $pageTitle = "Chevalresk";
 if (!isset($viewTitle))
@@ -9,13 +7,13 @@ if (!isset($viewHeadCustom))
 if (!isset($viewName))
     $viewName = "";
 
-if(!isset($itemListPage))
+if (!isset($itemListPage))
     $itemListPage = false;
 
 $loggedUserMenu = "";
 $connectedUserAvatar = "";
 
-if($itemListPage){
+if ($itemListPage) {
     $searchBar = <<<HTML
         <div class="dropdown">
             <button class="dropbtn">Filtres</button>
@@ -28,8 +26,7 @@ if($itemListPage){
             </div>
         </div>
     HTML;
-}
-else{
+} else {
     $searchBar = "";
 }
 
@@ -54,12 +51,16 @@ if (isset($_SESSION["validUser"])) {
         <a href="logout.php" class="dropdown-item">
             <i class="menuIcon fa fa-sign-out mx-2"></i> Déconnexion
         </a>
-        <!-- <a href="editProfilForm.php" class="dropdown-item">
+        <a href="ProfileEditForm.php" class="dropdown-item">
             <i class="menuIcon fa fa-user-edit mx-2"></i> Modifier votre profil
-        </a> -->
+        </a> 
         <div class="dropdown-divider"></div>
         <a href="itemsList.php" class="dropdown-item">
             <i class="menuIcon fa fa-sign-out mx-2"></i> Liste d'items
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="Enigma.php" class="dropdown-item">
+            <i class="menuIcon fa fa-sign-out mx-2"></i> Enigma
         </a>
     HTML;
 
