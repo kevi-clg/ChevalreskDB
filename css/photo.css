@@ -5,12 +5,14 @@
     grid-template-columns: repeat(auto-fill, 360px);
     gap: 10px;
     padding: 10px;
+    
 }
 
 .itemLayout {
     flex:1;
     scroll-snap-align: start;
-    margin: 20px;
+    
+    border: 1px solid black;
 }
 
 .itemImage {
@@ -37,7 +39,8 @@
 .itemTitle {
     font-size: 18px;
     font-weight: bold;
-    color:rgb(0, 87, 204);
+    color:rgb(14, 17, 20);
+    margin-left: 20px;
 }
 
 .itemDetailsOwner {

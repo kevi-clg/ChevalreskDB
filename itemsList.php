@@ -22,12 +22,16 @@ $list = [];
 
 
 if ($filtre != null) {
-
+    
 
     $stmt = $conn->query("SELECT * from Items where typee in (" . $filtre . ")");
 
     while ($row = $stmt->fetch()) {
         array_push($list, $row);
+    }
+
+    foreach ($list as $key => $item) {
+        #sort par type
     }
 } else {
     $stmt = $conn->query("call selectAllItems()");
@@ -45,16 +49,14 @@ foreach ($list as $item) {
     $id = $item["idItem"];
     $nom = $item['nom'];
     $image = "data/images/items/" . $item['photo'];
+    $
 
 
 
     $itemHTML = <<<HTML
                 
                 <div class="itemLayout" item_id="$id">
-                    <div class="itemTitleContainer" title="$nom">
-                        <div class="itemTitle ellipsis">$nom</div>
-                        
-                    </div>
+                    
                     <a href="itemDetails.php?id=$id">
                         <div class="itemImage" style="background-image:url('$image')">
                             
@@ -65,6 +67,10 @@ foreach ($list as $item) {
                             
                         </div>
                     </a>
+                    <div class="itemTitleContainer" title="$nom">
+                        <div class="itemTitle ellipsis">$nom</div>
+                        
+                    </div>
                 </div>                      
             HTML;
     $viewContent = $viewContent . $itemHTML;
