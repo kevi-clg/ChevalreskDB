@@ -2,7 +2,7 @@
 include 'php/sessionManager.php';
 include 'php/formUtilities.php';
 include 'php/date.php';
-include 'views/connection.php';
+include_once 'views/connection.php';
 include_once 'DAL/validUser.php';
 include_once 'DAL/fonctionRecherche.php';
 
@@ -11,47 +11,22 @@ $viewName = "Panier";
 $viewTitle = "Panier";
 $itemListPage = true;
 $filtre = "";
-if(isset($_GET['filtres'])){
-    $filtre = $_GET['filtres'];
-}
+
 $viewContent = "<div class='itemsLayout'>";
 
 $list = [];
 
-
-
-
-if ($filtre != null) {
-    
-
-    $stmt = $conn->query("SELECT * from Items where typee in (" . $filtre . ")");
-
-    while ($row = $stmt->fetch()) {
-        array_push($list, $row);
-    }
-
-    foreach ($list as $key => $item) {
-        #sort par type
-    }
-} else {
-    $stmt = $conn->query("call selectAllItems()");
-    while ($row = $stmt->fetch()) {
-        array_push($list, $row);
-    }
-    
+$stmt = $conn->query("call selectAllItems()");
+while ($row = $stmt->fetch()) {
+    array_push($list, $row);
 }
 
-##itemDetails.php?id=$id
+foreach ($list as $item_Panier) {
 
-foreach ($list as $item) {
-
-
-    $id = $item["idItem"];
-    $nom = $item['nom'];
-    $image = "data/images/items/" . $item['photo'];
+    $id = $item_Panier["idItem"];
+    $nom = $item_Panier['nom'];
+    $prix = $item_Panier['prix'];
     $
-
-
 
     $itemHTML = <<<HTML
                 
