@@ -49,7 +49,7 @@ foreach ($list as $item) {
     $id = $item["idItem"];
     $nom = $item['nom'];
     $image = "data/images/items/" . $item['photo'];
-    $
+    $prix = $item["prix"];
 
 
 
@@ -69,8 +69,12 @@ foreach ($list as $item) {
                     </a>
                     <div class="itemTitleContainer" title="$nom">
                         <div class="itemTitle ellipsis">$nom</div>
-                        
+                        <div class="itemTitle ellipsis">$prix écus</div>
                     </div>
+                    
+                        
+                        
+                    
                 </div>                      
             HTML;
     $viewContent = $viewContent . $itemHTML;

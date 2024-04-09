@@ -12,7 +12,7 @@
     flex:1;
     scroll-snap-align: start;
     
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 .itemImage {
