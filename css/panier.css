@@ -1,0 +1,14 @@
+.itemPanierContainer {
+    height: 40px;
+    display:grid;
+    grid-template-columns: auto 25px 25px;
+    align-items: center;
+    cursor:default;
+}
+
+.itemPanier {
+    font-size: 18px;
+    font-weight: bold;
+    color:rgb(14, 17, 20);
+    margin-left: 20px;
+}

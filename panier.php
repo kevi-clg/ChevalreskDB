@@ -16,7 +16,7 @@ $viewTitle = "Panier";
 $itemListPage = true;
 $filtre = "";
 
-$viewContent = "<div class='itemsLayout'>";
+$viewContent = "<table>";
 
 $list = [];
 
@@ -27,36 +27,28 @@ while ($row = $stmt->fetch()) {
 
 foreach ($list as $item_Panier) {
 
-    $id = $item_Panier["idItem"];
+    $image = "data/images/items/" . $item['photo'];
     $nom = $item_Panier['nom'];
     $prix = $item_Panier['prix'];
-    $
+    $quantite = $item_Panier['quantite'];
 
     $itemHTML = <<<HTML
                 
-                <div class="itemLayout" item_id="$id">
+                <tr class='itemPanierContainer' title="$nom">
                     
-                    <a href="itemDetails.php?id=$id">
-                        <div class="itemImage" style="background-image:url('$image')">
-                            
-                            
-                        </div>
-                        <div class="itemCreationDate"> 
-                            
-                            
-                        </div>
-                    </a>
-                    <div class="itemTitleContainer" title="$nom">
-                        <div class="itemTitle ellipsis">$nom</div>
-                        
-                    </div>
-                </div>                      
+                    <td class='itemPanier'>$nom :</td>
+                    <td class='itemPanier'> $prix $</td>
+                    <td class='itemPanier'> 
+
+                    </td>
+
+                </tr>                      
             HTML;
     $viewContent = $viewContent . $itemHTML;
 
 
 }
-$viewContent = $viewContent . "</div>";
+$viewContent = $viewContent . "</table>";
 $viewScript = <<<HTML
     <script defer>
         $("#setitemOwnerSearchIdCmd").on("click", function() {
