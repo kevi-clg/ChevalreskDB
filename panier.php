@@ -1,5 +1,4 @@
 <?php
-include 'panier.css';
 include 'php/sessionManager.php';
 include 'php/formUtilities.php';
 include_once 'views/connection.php';
@@ -27,7 +26,7 @@ while ($row = $stmt->fetch()) {
 
 foreach ($list as $item_Panier) {
 
-    $image = "data/images/items/" . $item['photo'];
+    
     $nom = $item_Panier['nom'];
     $prix = $item_Panier['prix'];
     $quantite = $item_Panier['quantite'];
@@ -36,7 +35,6 @@ foreach ($list as $item_Panier) {
                 
                 <tr class="itemPanierContainer" title="$nom">
                     
-                    <td class="itemPanier">  </td>
                     <td class="itemPanier"> $nom </td>
                     <td class="itemPanier"> $prix $</td>
                     <td class="itemPanier"> 
