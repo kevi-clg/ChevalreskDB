@@ -1,5 +1,5 @@
 <?php
-
+include 'panier.css';
 include 'php/sessionManager.php';
 include 'php/formUtilities.php';
 include_once 'views/connection.php';
@@ -34,12 +34,18 @@ foreach ($list as $item_Panier) {
 
     $itemHTML = <<<HTML
                 
-                <tr class='itemPanierContainer' title="$nom">
+                <tr class="itemPanierContainer" title="$nom">
                     
-                    <td class='itemPanier'>$nom :</td>
-                    <td class='itemPanier'> $prix $</td>
-                    <td class='itemPanier'> 
-
+                    <td class="itemPanier">  </td>
+                    <td class="itemPanier"> $nom </td>
+                    <td class="itemPanier"> $prix $</td>
+                    <td class="itemPanier"> 
+                        <input type="button" value="-" onclick>
+                        $quantite
+                        <input type="button" value="+">
+                    </td>
+                    <td class="itemPanier"> 
+                        <input type="button" value="supprimer">
                     </td>
 
                 </tr>                      
