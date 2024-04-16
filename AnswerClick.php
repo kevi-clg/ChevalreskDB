@@ -25,6 +25,7 @@ if(intval($_SESSION['Reponses'][$Reponsechoisie]["flag"]) == 1)
     }
 
     AddEcus($solde);
+    BonneReponse();
     LoginJoueur($_SESSION['Alias'], $_SESSION['Password']);
 }
 else

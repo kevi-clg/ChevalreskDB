@@ -6,8 +6,19 @@ require 'DAL/functionsEnigma.php';
 userAccess();
 
 unset($_SESSION['Enigme']);
+unset($_SESSION['TypeEnigme']);
+unset($_SESSION['DiffEnigme']);
+unset($_SESSION['IdEnigme']);
 $difficulty = intval($_GET['difficulty']);
-fetchenigme($difficulty);
+$type = intval($_GET['type']);
+if($type == 0)
+{
+    fetchenigme($difficulty);
+}
+else
+{
+    fetchenigmealc($difficulty);
+}
 fetchReponses($_SESSION['IdEnigme']);
 redirect('Enigma.php');
 

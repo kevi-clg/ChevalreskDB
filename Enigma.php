@@ -26,13 +26,25 @@ if (!isset($_SESSION['Enigme'])) {
     <div style="text-align: center;">
     
     <h1>Choisissez une difficultée</h1>
-    <a href="fetchEnigma.php?difficulty=1">
+    <a href="fetchEnigma.php?difficulty=1&type=0">
         <button style="height:30px; width:100px;">Facile</button>
     </a>
-    <a href="fetchEnigma.php?difficulty=2">
+    <a href="fetchEnigma.php?difficulty=2&type=0">
         <button style="height:30px; width:100px;">Intermédiaire</button>
     </a>
-    <a href="fetchEnigma.php?difficulty=3">
+    <a href="fetchEnigma.php?difficulty=3&type=0">
+        <button style="height:30px; width:100px;">Expert</button>
+    </a>
+    <br>
+    
+    <h2>Question D'alchimiste</h2>
+    <a href="fetchEnigma.php?difficulty=1&type=1">
+        <button style="height:30px; width:100px;">Facile</button>
+    </a>
+    <a href="fetchEnigma.php?difficulty=2&type=1">
+        <button style="height:30px; width:100px;">Intermédiaire</button>
+    </a>
+    <a href="fetchEnigma.php?difficulty=3&type=1">
         <button style="height:30px; width:100px;">Expert</button>
     </a>
     </div>
