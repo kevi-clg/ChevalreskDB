@@ -2,7 +2,7 @@
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AfficherPanier`(IN `joueur_connecter` INT)
 BEGIN
-	select items.nom, items.prix, panier.quantite, items.photo
+	select items.idItem, items.nom, items.prix, panier.quantite, items.photo
 	from panier
 	INNER JOIN items ON items.idItem = panier.idItem
 	where idJoueur = joueur_connecter;

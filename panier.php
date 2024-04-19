@@ -26,7 +26,7 @@ while ($row = $stmt->fetch()) {
 
 foreach ($list as $item_Panier) {
 
-    
+    $idItem = $item_Panier['idItem'];
     $nom = $item_Panier['nom'];
     $prix = $item_Panier['prix'];
     $quantite = $item_Panier['quantite'];
@@ -38,9 +38,9 @@ foreach ($list as $item_Panier) {
                     <td class="itemPanier"> $nom </td>
                     <td class="itemPanier"> $prix $</td>
                     <td class="itemPanier"> 
-                        <input type="button" value="-" onclick>
+                        <input type="button" value="-" onclick="">
                         $quantite
-                        <input type="button" value="+">
+                        <input type="button" value="+" onclick="ajouter($idItem)">
                     </td>
                     <td class="itemPanier"> 
                         <input type="button" value="supprimer">
@@ -61,6 +61,12 @@ $viewScript = <<<HTML
         $("#setSearchKeywordsCmd").on("click", function() {
             window.location = "setSearchKeywords.php?keywords=" + $("#keywords").val();
         });
+        function ajouter($idItem)
+        {
+            <?php
+                AjouterPanier($idItem)
+            >
+        }
     </script>
 HTML;
 include "views/master.php";
