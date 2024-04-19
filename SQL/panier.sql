@@ -30,3 +30,21 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
+
+--supprimer un item du panier
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `supprimerPanier`(IN `idItemParent` INT)
+DELETE FROM panier WHERE idItem = idItemParent$$
+DELIMITER ;
+
+--augmenter la quantiter du panier
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AjouterQuantiterPanier`(IN `idItemParent` INT)
+UPDATE panier,items SET panier.quantite = panier.quantite + 1, items.quantite = items.quantite - 1 WHERE idItem = idItemParent$$
+DELIMITER ;
+
+--reduire la quantiter du panier
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EnleverQuantitePanier`(IN `idItemParent` INT)
+UPDATE panier,items SET panier.quantite = panier.quantite - 1, items.quantite = items.quantite + 1 WHERE idItem = idItemParent$$
+DELIMITER ;
