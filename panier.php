@@ -40,7 +40,7 @@ foreach ($list as $item_Panier) {
                     <td class="itemPanier"> 
                         <input type="button" value="-" onclick="">
                         $quantite
-                        <input type="button" value="+" onclick="create()">
+                        <input type="button" value="+" id=$idItem onclick="create($idItem)">
                     </td>
                     <td class="itemPanier"> 
                         <input type="button" value="supprimer">
@@ -61,17 +61,17 @@ $viewScript = <<<HTML
         $("#setSearchKeywordsCmd").on("click", function() {
             window.location = "setSearchKeywords.php?keywords=" + $("#keywords").val();
         });
-        function create ()
+        function create ($idItem)
         {
             $.ajax({
-                url:"functions_Panier.php",
-                type:"post",
-                dataType: 'json',
-                data: {},
-                success: function (AjouterPanier){
-                    
-                }
-            });
+            url: 'ajouter.php',
+            type: 'POST',
+            data: { idItem: $(this).attr('id') },
+            success: function(response) {
+            },
+            error: function(xhr, status, error) {
+            }
+        });
         }
     </script>
 HTML;
