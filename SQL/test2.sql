@@ -3,6 +3,9 @@ Delete From armures;
 Delete From potions;
 Delete From éléments;
 Delete From items;
+delete from panier;
+delete from évaluation;
+
 ALTER TABLE items AUTO_INCREMENT = 1;
 ALTER TABLE joueurs AUTO_INCREMENT = 1;
 Delete From joueurs;
@@ -17,7 +20,7 @@ INSERT INTO joueurs (alias, prenom, nom, password, avatar) VALUES ('Wilson23', '
 call AjouterArme('Lance', 10, 14, 'arme.png',3,1, 'arme tres equilibrer avec une parfaite areodynamique magnifiant vos lancer');
 
 call AjouterElement('larme de licorne',3,250,'elements.png','éléments',5,1);
-call AjouterPotion('potion de resurection',14,112,'potion.png','vous ramene a la vie',20,'potions');
+call AjouterPotion('potion de resurection',14,112,'potion.png','vous ramene a la vie',20,'Défense');
 call AjouterArme('epee', 25,22,'arme.png',4,1,'une arme pour un roi');
 call AjouterElement('poudre d os de mort vivant',26,53,'elements.png','éléments',4,4);
 
@@ -27,11 +30,11 @@ call AjouterElement('poil de loup',32,43,'elements.png','éléments',1,3);
 
 call AjouterArme('dague',43,3,'arme.png',1,1,'une arme sournoise pour des personne sournois');
 call AjouterArmure('casque',32,15,'armure.png','mithril','s');
-call AjouterPotion('potion de force',10,16,'potion.png','vous donne de la force',23,'potions');
+call AjouterPotion('potion de force',10,16,'potion.png','vous donne de la force',23,'Attaque');
 call AjouterArmure('botte',30,12,'armure.png','bronze','l');
 
 call AjouterArme('hache',12,10,'arme.png',5,1,'une arme puissante');
-call AjouterPotion('potion de jump',13,16,'potion.png','vous permet de sauter plus haut',11,'potions');
+call AjouterPotion('potion de jump',13,16,'potion.png','vous permet de sauter plus haut',11,'Défense');
 
 call AjouterArmure('jambiere',12,15,'armure.png','or','x');
 call AjouterArmure('bracelet',28,18,'armure.png','diamant','s');
@@ -39,5 +42,5 @@ call AjouterArmure('bracelet',28,18,'armure.png','diamant','s');
 call AjouterElement('dent de dragon',8,153,'elements.png','éléments',5,10);
 call AjouterElement('sang de liche',11,99,'elements.png','éléments',2,4);
 
-call AjouterPotion('potion de vitesse',11,16,'potion.png','vous donne de la vitesse',12,'potions');
-call AjouterPotion('poison',12,16,'potion.png','ceci est un poison',9,'potions');
+call AjouterPotion('potion de vitesse',11,16,'potion.png','vous donne de la vitesse',12,'Défense');
+call AjouterPotion('poison',12,16,'potion.png','ceci est un poison',9,'Attaque');

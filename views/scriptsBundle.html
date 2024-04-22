@@ -29,8 +29,24 @@
 
     }
 
-    function Refresh(){
+    function Refresh() {
         console.log(whereIn);
         window.location.href = 'itemsList.php?filtres=' + whereIn;
+    }
+
+
+    $('#btnAjoutPanier').on('click',AjouterPanier)
+    function AjouterPanier(idJoueur, idItem) {
+        var xhr = new XMLHttpRequest();
+        
+        var url = 'fonctionDetails.php?idJoueur=' + idJoueur + '&idItem=' + idItem + '&AjouterPanier=True';
+        xhr.open('GET', url, true);
+        xhr.onload = function () {
+            if (xhr.status == 200) {
+                
+                alert(xhr.responseText);
+            }
+        };
+        xhr.send();
     }
 </script>

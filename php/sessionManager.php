@@ -34,6 +34,7 @@ function delete_session()
 }
 function redirect($url)
 {
+    
     header('location:' . $url);
     exit();
 }
