@@ -74,7 +74,7 @@ function rechercheCommentaire($idItem){
     return $list;
 }
 
-if(isset($_POST['submit_button'])) {
+if(isset($_POST['AjouterPanier'])) {
     // Appeler votre fonction PHP ici
     AjouterPanier($_GET['idJoueur'],$_GET['idItem']);
 }

@@ -103,7 +103,7 @@ $viewContent = <<<HTML
                         
 
                         <form action= $cheminAjoutPanier method="post">
-                            <input type="submit" name="submit_button" value="Ajouter au panier">
+                            <input type="submit" name="AjouterPanier" value="Ajouter au panier">
                         </form>
                         
 
