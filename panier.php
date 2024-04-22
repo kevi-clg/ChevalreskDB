@@ -31,28 +31,34 @@ foreach ($list as $item_Panier) {
     $nom = $item_Panier['nom'];
     $prix = $item_Panier['prix'];
     $quantite = $item_Panier['quantite'];
-    $cheminUrl = "DAL/fonctionDetails.php?idJoueur=".$idJoueur."&idItem=".$idItem;
-    $itemHTML = <<<HTML
-                
-                <tr class="itemPanierContainer" title="$nom">
+    $cheminAjoutPanier = "DAL/functions_Panier.php?idJoueur=".$idJoueur."&idItem=".$idItem;
+    $cheminRetraitPanier = "DAL/functions_Panier.php?idJoueur=".$idJoueur."&idItem=".$idItem;
+    if($quantite != 0)
+    {
+        $itemHTML = <<<HTML
                     
-                    <td class="itemPanier"> $nom </td>
-                    <td class="itemPanier"> $prix $</td>
-                    <td class="itemPanier"> 
-                        <input type="button" value="-" onclick="">
-                        $quantite
-                        <form action="$cheminUrl" methode = "post">
-                            <input type="submit" value="+" name="AjouterPanier">
-                        </form>
-                    </td>
-                    <td class="itemPanier"> 
-                        <input type="button" value="supprimer">
-                    </td>
+                    <tr class="itemPanierContainer" title="$nom">
+                        
+                        <td class="itemPanier"> $nom </td>
+                        <td class="itemPanier"> $prix $</td>
+                        <td class="itemPanier">
+                            <form action= $cheminRetraitPanier method="post"> 
+                                <input type="submit" name="EnleverPanier" value=" - ">
+                            </form>
+                            $quantite
+                            <form action= $cheminAjoutPanier method="post">
+                                <input type="submit" name="AjouterPanier" value=" + ">
+                            </form>
+                            
+                        </td>
+                        <td class="itemPanier"> 
+                            <input type="button" value="supprimer">
+                        </td>
 
-                </tr>                      
-            HTML;
-    $viewContent = $viewContent . $itemHTML;
-
+                    </tr>                      
+                HTML;
+        $viewContent = $viewContent . $itemHTML;
+    }
 
 }
 include "views/master.php";

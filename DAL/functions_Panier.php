@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(E_ERROR | E_PARSE);
+include_once '../php/sessionManager.php';
 function RecherchePanier($idJoueur)
 {
     $host = 'localhost';
@@ -23,11 +24,9 @@ function RecherchePanier($idJoueur)
     
 }
 
-function AjouterQuPanier($idItem, $idJoueur)
-{
-    if($idJoueur == -1){
-        redirect("/Chevalresk/itemDetails.php?id=". $idItem);
-    }
+function AjouterPanier($idJoueur,$idItem){
+    
+    
     $host = 'localhost';
     $db = 'dbchevalersk18';
     $user = 'root';
@@ -44,7 +43,37 @@ function AjouterQuPanier($idItem, $idJoueur)
     $stmt->bindParam(':idJoueurVariable', $idJoueur);
     $stmt->bindParam(':idItemVariable', $idItem);
     $stmt->execute();
-    redirect("../itemDetails.php?id=". $idItem);
+    redirect("../panier.php?id=". $idJoueur);
+}
+if(isset($_POST['AjouterPanier'])) {
+    // Appeler votre fonction PHP ici
+    AjouterPanier($_GET['idJoueur'],$_GET['idItem']);
+}
+
+function EnleverPanier($idJoueur,$idItem){
+    
+    
+    $host = 'localhost';
+    $db = 'dbchevalersk18';
+    $user = 'root';
+    $password = '';
+    $charset = 'utf8';
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+   try {
+       $conn = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+   } catch (\Throwable $th) {
+       throw new PDOException($th->getMessage());
+   }
+    $stmt = $conn->prepare('CALL EnleverPanier(:idJoueurVariable, :idItemVariable)');
+    
+    $stmt->bindParam(':idJoueurVariable', $idJoueur);
+    $stmt->bindParam(':idItemVariable', $idItem);
+    $stmt->execute();
+    redirect("../panier.php?id=". $idJoueur);
+}
+if(isset($_POST['EnleverPanier'])) {
+    // Appeler votre fonction PHP ici
+    EnleverPanier($_GET['idJoueur'],$_GET['idItem']);
 }
 
 function SupprimerItemPanier($idItem)
