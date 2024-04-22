@@ -23,8 +23,11 @@ function RecherchePanier($idJoueur)
     
 }
 
-function AjouterPanier($idItem)
+function AjouterQuPanier($idItem, $idJoueur)
 {
+    if($idJoueur == -1){
+        redirect("/Chevalresk/itemDetails.php?id=". $idItem);
+    }
     $host = 'localhost';
     $db = 'dbchevalersk18';
     $user = 'root';
@@ -36,35 +39,12 @@ function AjouterPanier($idItem)
    } catch (\Throwable $th) {
        throw new PDOException($th->getMessage());
    }
-
-   $stmt = $conn->prepare('CALL AjouterQuantiterPanier(:idItemParent)');
-
-   $stmt->bindParam(':idItemParent', $idItem);
-   
+    $stmt = $conn->prepare('CALL AjouterPanier(:idJoueurVariable, :idItemVariable)');
+    
+    $stmt->bindParam(':idJoueurVariable', $idJoueur);
+    $stmt->bindParam(':idItemVariable', $idItem);
     $stmt->execute();
-    return $stmt;
-}
-
-function EnleverPanier($idItem)
-{
-    $host = 'localhost';
-    $db = 'dbchevalersk18';
-    $user = 'root';
-    $password = '';
-    $charset = 'utf8';
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-   try {
-       $conn = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
-   } catch (\Throwable $th) {
-       throw new PDOException($th->getMessage());
-   }
-
-   $stmt = $conn->prepare('CALL EnleverQuantitePanier(:idItemParent)');
-
-   $stmt->bindParam(':idItemParent', $idItem);
-   
-    $stmt->execute();
-    return $stmt;
+    redirect("../itemDetails.php?id=". $idItem);
 }
 
 function SupprimerItemPanier($idItem)

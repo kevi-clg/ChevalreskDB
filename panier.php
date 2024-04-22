@@ -26,11 +26,12 @@ while ($row = $stmt->fetch()) {
 
 foreach ($list as $item_Panier) {
 
+    $idJoueur = $item_Panier['idJoueur'];
     $idItem = $item_Panier['idItem'];
     $nom = $item_Panier['nom'];
     $prix = $item_Panier['prix'];
     $quantite = $item_Panier['quantite'];
-
+    $cheminUrl = "DAL/fonctionDetails.php?idJoueur=".$idJoueur."&idItem=".$idItem;
     $itemHTML = <<<HTML
                 
                 <tr class="itemPanierContainer" title="$nom">
@@ -40,7 +41,9 @@ foreach ($list as $item_Panier) {
                     <td class="itemPanier"> 
                         <input type="button" value="-" onclick="">
                         $quantite
-                        <input type="button" value="+" id=$idItem onclick="create($idItem)">
+                        <form action="$cheminUrl" methode = "post">
+                            <input type="submit" value="+" name="AjouterPanier">
+                        </form>
                     </td>
                     <td class="itemPanier"> 
                         <input type="button" value="supprimer">
@@ -52,27 +55,4 @@ foreach ($list as $item_Panier) {
 
 
 }
-$viewContent = $viewContent . "</table>";
-$viewScript = <<<HTML
-    <script defer>
-        $("#setitemOwnerSearchIdCmd").on("click", function() {
-            window.location = "setitemOwnerSearchId.php?id=" + $("#userSelector").val();
-        });
-        $("#setSearchKeywordsCmd").on("click", function() {
-            window.location = "setSearchKeywords.php?keywords=" + $("#keywords").val();
-        });
-        function create ($idItem)
-        {
-            $.ajax({
-            url: 'ajouter.php',
-            type: 'POST',
-            data: { idItem: $(this).attr('id') },
-            success: function(response) {
-            },
-            error: function(xhr, status, error) {
-            }
-        });
-        }
-    </script>
-HTML;
 include "views/master.php";
