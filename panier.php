@@ -33,6 +33,7 @@ foreach ($list as $item_Panier) {
     $quantite = $item_Panier['quantite'];
     $cheminAjoutPanier = "DAL/functions_Panier.php?idJoueur=".$idJoueur."&idItem=".$idItem;
     $cheminRetraitPanier = "DAL/functions_Panier.php?idJoueur=".$idJoueur."&idItem=".$idItem;
+    $cheminSupPanier = "DAL/functions_Panier.php?idJoueur=".$idJoueur."&idItem=".$idItem;
     if($quantite != 0)
     {
         $itemHTML = <<<HTML
@@ -51,8 +52,10 @@ foreach ($list as $item_Panier) {
                             </form>
                             
                         </td>
-                        <td class="itemPanier"> 
-                            <input type="button" value="supprimer">
+                        <td class="itemPanier">
+                            <form action= $cheminSupPanier method="post"> 
+                                <input type="submit" name="supprimerPanier" value="supprimer">
+                            </form>
                         </td>
 
                     </tr>                      
