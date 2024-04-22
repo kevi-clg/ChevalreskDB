@@ -90,7 +90,7 @@ function SupprimerItemPanier($idJoueur,$idItem){
    } catch (\Throwable $th) {
        throw new PDOException($th->getMessage());
    }
-    $stmt = $conn->prepare('CALL supprimerPanier(:idJoueurVariable, :idItemVariable)');
+    $stmt = $conn->prepare('CALL supprimerPanier(:idItemVariable, :idJoueurVariable)');
     
     $stmt->bindParam(':idJoueurVariable', $idJoueur);
     $stmt->bindParam(':idItemVariable', $idItem);
