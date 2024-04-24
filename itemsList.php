@@ -30,7 +30,7 @@ if ($filtre != null) {
         array_push($list, $row);
     }
 
-    foreach ($list as $key => $item) {
+    foreach ($list as $key => $itemsCraft) {
         #sort par type
     }
 } else {
@@ -43,13 +43,13 @@ if ($filtre != null) {
 
 ##itemDetails.php?id=$id
 
-foreach ($list as $item) {
+foreach ($list as $itemsCraft) {
 
 
-    $id = $item["idItem"];
-    $nom = $item['nom'];
-    $image = "data/images/items/" . $item['photo'];
-    $prix = $item["prix"];
+    $id = $itemsCraft["idItem"];
+    $nom = $itemsCraft['nom'];
+    $image = "data/images/items/" . $itemsCraft['photo'];
+    $prix = $itemsCraft["prix"];
 
 
 

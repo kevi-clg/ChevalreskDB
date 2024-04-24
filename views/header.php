@@ -51,7 +51,7 @@ if (isset($_SESSION["validUser"])) {
         <a href="logout.php" class="dropdown-item">
             <i class="menuIcon fa fa-sign-out mx-2"></i> Déconnexion
         </a>
-        <a href="ProfileEditForm.php" class="dropdown-item">
+        <a href="ProfilEditForm.php" class="dropdown-item">
             <i class="menuIcon fa fa-user-edit mx-2"></i> Modifier votre profil
         </a> 
         <div class="dropdown-divider"></div>
