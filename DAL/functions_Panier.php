@@ -76,8 +76,9 @@ if(isset($_POST['EnleverPanier'])) {
     EnleverPanier($_GET['idJoueur'],$_GET['idItem']);
 }
 
-function SupprimerItemPanier($idItem)
-{
+function SupprimerItemPanier($idJoueur,$idItem){
+    
+    
     $host = 'localhost';
     $db = 'dbchevalersk18';
     $user = 'root';
@@ -89,11 +90,14 @@ function SupprimerItemPanier($idItem)
    } catch (\Throwable $th) {
        throw new PDOException($th->getMessage());
    }
-
-   $stmt = $conn->prepare('CALL supprimerPanier(:idItemParent)');
-
-   $stmt->bindParam(':idItemParent', $idItem);
-   
+    $stmt = $conn->prepare('CALL supprimerPanier(:idItemVariable, :idJoueurVariable)');
+    
+    $stmt->bindParam(':idJoueurVariable', $idJoueur);
+    $stmt->bindParam(':idItemVariable', $idItem);
     $stmt->execute();
-    return $stmt;
+    redirect("../panier.php?id=". $idJoueur);
+}
+if(isset($_POST['supprimerPanier'])) {
+    // Appeler votre fonction PHP ici
+    SupprimerItemPanier($_GET['idJoueur'],$_GET['idItem']);
 }
