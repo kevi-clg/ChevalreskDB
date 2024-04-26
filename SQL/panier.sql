@@ -56,4 +56,24 @@ BEGIN
 END$$
 DELIMITER ;
 
---Payer
+--ajouter inventaire depuis panier
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AjouterInventaireDepuisPanier`(IN `idJoueurVariable` INT, IN `idItemVariable` INT, IN `quantiterPanier` INT)
+BEGIN
+    DECLARE existing_quantity INT;
+    
+    -- Vérifier si l'item existe déjà dans le panier du joueur
+    SELECT quantite INTO existing_quantity
+    FROM inventaire
+    WHERE idJoueur = idJoueurVariable AND idItem = idItemVariable;
+    
+    IF existing_quantity IS NOT NULL THEN
+        -- Si l'item existe déjà, mettre à jour la quantité
+        UPDATE inventaire
+        SET quantite = quantiterPanier + existing_quantity
+        WHERE idJoueur = idJoueurVariable AND idItem = idItemVariable;
+    ELSE
+        INSERT INTO inventaire VALUES (idJoueurVariable,idItemVariable, quantiterPanier);
+    END IF;
+END$$
+DELIMITER ;

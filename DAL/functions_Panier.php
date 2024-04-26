@@ -115,7 +115,27 @@ function payerPanier($idJoueur,$total){
        throw new PDOException($th->getMessage());
    }
 
-   $stmt = $conn->prepare('SELECT solde from joueurs where idJoueur = $idJoueur');
+   $stmt = $conn->query("SELECT solde from joueurs where idJoueur = (" . $idJoueur . ")");
+
+   $solde = $stmt->fetch();
+   $solde = intval($solde['solde']);
+   $total = intval($total);
+
+   if($total <= $solde){
+        //Payer 
+        $solde = $solde - $total;
+        $stmt = $conn->query("UPDATE joueurs SET solde = (" . $solde . ") WHERE idJoueur = (" . $idJoueur . ")");
+        $stmt->execute();
+
+        //Ajouter a l'inventaire
+        $stmt = $conn->
+
+        //vider Panier
+   }
+   else{
+      print("votre Solde ne permet pas de payer votre facture");
+   }
+   redirect("../panier.php?id=". $idJoueur);
 }
 if(isset($_POST['payerPanier'])) {
     // Appeler votre fonction PHP ici
