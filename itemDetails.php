@@ -24,13 +24,13 @@ if (!isset($_SESSION['Id'])) {
 }
 
 $viewItem = "";
-$item = RechercherItemId($idItem);
-switch ($item['typee']) {
+$itemsCraft = RechercherItemId($idItem);
+switch ($itemsCraft['typee']) {
     case 'Arme':
-       $item = RechercheArme($idItem);
-       $efficacite = $item['efficacite'];
-       $genre = $item['genre'];
-       $description = $item['descriptionArme'];        
+       $itemsCraft = RechercheArme($idItem);
+       $efficacite = $itemsCraft['efficacite'];
+       $genre = $itemsCraft['genre'];
+       $description = $itemsCraft['descriptionArme'];        
        $viewItem .= <<<HTML
                         <div>Efficacité: $efficacite</div>
                         <div>Nombre de mains: $genre</div>
@@ -39,9 +39,9 @@ switch ($item['typee']) {
         break;
     
     case 'Armure':
-        $item = RechercheArmure($idItem);
-        $matiere = $item['matiere'];
-        $taille = $item['taille'];
+        $itemsCraft = RechercheArmure($idItem);
+        $matiere = $itemsCraft['matiere'];
+        $taille = $itemsCraft['taille'];
         $viewItem .= <<<HTML
                         <div>Matière: $matiere</div>
                         <div>Taille: $taille</div>
@@ -49,11 +49,11 @@ switch ($item['typee']) {
        HTML;
         break;
     case 'Élément':
-        $item = RechercheElement($idItem);
-        $typeElement = $item['type'];
-        $rarete = $item['rarete'];
-        $dangerosite = $item['dangerosite'];
-        $typeElement = $item['type'];
+        $itemsCraft = RechercheElement($idItem);
+        $typeElement = $itemsCraft['type'];
+        $rarete = $itemsCraft['rarete'];
+        $dangerosite = $itemsCraft['dangerosite'];
+        $typeElement = $itemsCraft['type'];
         $viewItem .= <<<HTML
                         <div>Rareté: $rarete/5</div>
                         <div>dangerosite: $dangerosite/10</div>
@@ -62,10 +62,10 @@ switch ($item['typee']) {
         break;
     
     case 'Potion':
-        $item = RecherchePotion($idItem);
-        $typePotion = $item['type'];
-        $effect = $item['effect'];
-        $duree = $item['duree'];
+        $itemsCraft = RecherchePotion($idItem);
+        $typePotion = $itemsCraft['type'];
+        $effect = $itemsCraft['effect'];
+        $duree = $itemsCraft['duree'];
         $viewItem .= <<<HTML
                         <div>Type: $typePotion</div>
                         <div>effet: $effect</div>
@@ -75,15 +75,28 @@ switch ($item['typee']) {
 }
 
 
-$idItem = $item["idItem"];
-$nom = $item['nom'];
-$image = "data/images/items/" . $item['photo'];
-$prix = $item["prix"];
-$type = $item['typee'];
-$quantite = $item['quantite'];
+$idItem = $itemsCraft["idItem"];
+$nom = $itemsCraft['nom'];
+$image = "data/images/items/" . $itemsCraft['photo'];
+$prix = $itemsCraft["prix"];
+$type = $itemsCraft['typee'];
+$quantite = $itemsCraft['quantite'];
 
 
 $cheminAjoutPanier = "DAL/fonctionDetails.php?idJoueur=" . $idJoueur . "&idItem=" . $idItem;
+
+if($itemsCraft['typee'] == "Potion"){
+    $bouton = <<<HTML
+                <a href="panoramix.php?idItem=$idItem" >Panoramix</a>
+    HTML;
+}else{
+    $bouton = <<<HTML
+                <form action= $cheminAjoutPanier method="post">
+                    <input type="submit" name="AjouterPanier" value="Ajouter au panier">
+                </form>
+                        
+    HTML;
+}
 
 $viewContent = <<<HTML
                     <div>
@@ -102,10 +115,7 @@ $viewContent = <<<HTML
                         
                         
 
-                        <form action= $cheminAjoutPanier method="post">
-                            <input type="submit" name="AjouterPanier" value="Ajouter au panier">
-                        </form>
-                        
+                        $bouton
 
                     </div>
 
