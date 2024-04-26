@@ -57,3 +57,4 @@ function getInventaireId($idJoueur,$idItem){
     return $list[0];
     
 }
+
