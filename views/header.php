@@ -58,10 +58,14 @@ if (isset($_SESSION["validUser"])) {
         <a href="itemsList.php" class="dropdown-item">
             <i class="menuIcon fa fa-sign-out mx-2"></i> Liste d'items
         </a>
+        <a href="inventaire.php" class="dropdown-item">
+            <i class="menuIcon fa fa-sign-out mx-2"></i> Inventaire
+        </a>
         <div class="dropdown-divider"></div>
         <a href="Enigma.php" class="dropdown-item">
             <i class="menuIcon fa fa-sign-out mx-2"></i> Enigma
         </a>
+        
     HTML;
 
     $connectedUserAvatar = <<<HTML
@@ -75,10 +79,6 @@ if (isset($_SESSION["validUser"])) {
         <div class="dropdown-divider"></div>
         <a href="itemsList.php" class="dropdown-item">
             <i class="menuIcon fa fa-sign-out mx-2"></i> Liste d'items
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="inventaire.php" class="dropdown-item">
-            <i class="menuIcon fa fa-sign-out mx-2"></i> Inventaire
         </a>
     HTML;
     $connectedUserAvatar = <<<HTML
