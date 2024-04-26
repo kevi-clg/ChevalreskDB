@@ -1,0 +1,24 @@
+.flex-container {
+    display: flex;
+}
+
+
+.itemTitleContainerinventaire {
+    font-size: 18px;
+    font-weight: bold;
+    color:rgb(14, 17, 20);
+    margin-left: 20px;
+   display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px; 
+}
+
+.itemTitleInventaire {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin:5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

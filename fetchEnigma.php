@@ -17,7 +17,7 @@ if($type == 0)
 }
 else
 {
-    fetchenigmealc($difficulty);
+    fetchenigmerandom();
 }
 fetchReponses($_SESSION['IdEnigme']);
 redirect('Enigma.php');

@@ -14,15 +14,15 @@ function fetchenigme($difficulty)
         throw new PDOException($th->getMessage());
     }
 
-    $stmt = $conn->prepare('CALL FetchEnigme(:DiffParam)');
+    $stmt = $conn->prepare('CALL FetchEnigme(:DiffParam, :IdJoueurPara)');
 
     $stmt->bindParam(':DiffParam', $difficulty);
-
+    $stmt->bindParam(':IdJoueurPara', $_SESSION['Id']);
     $stmt->execute();
     $enigme = $stmt->fetch();
     if(!$enigme)
     {
-        $_SESSION['Message'] = '<script>alert("Aucune Enigme de ce type disponible ! Essayer une autre option")</script>'; 
+        $_SESSION['Message'] = '<div style="color:black;">Aucune Enigme de ce type disponible ! Essayer une autre options</div>'; 
 
     }
     else
@@ -33,7 +33,7 @@ function fetchenigme($difficulty)
         $_SESSION['TypeEnigme'] = $enigme["typee"];
     }
 }
-function fetchenigmealc($difficulty)
+function fetchenigmerandom()
 {
     $host = 'localhost';
     $db = 'dbchevalersk18';
@@ -47,15 +47,13 @@ function fetchenigmealc($difficulty)
         throw new PDOException($th->getMessage());
     }
 
-    $stmt = $conn->prepare('CALL FetchEnigmeAlch(:DiffParam)');
-
-    $stmt->bindParam(':DiffParam', $difficulty);
-
+    $stmt = $conn->prepare('CALL fetchenigmerandom(:IdJoueurPara)');
+    $stmt->bindParam(':IdJoueurPara', $_SESSION['Id']);
     $stmt->execute();
     $enigme = $stmt->fetch();
     if(!$enigme)
     {
-        $_SESSION['Message'] = '<script>alert("Aucune Enigme de ce type disponible ! Essayer une autre option")</script>'; 
+        $_SESSION['Message'] = '<div style="color:black;">Aucune Enigme de ce type disponible ! Essayer une autre option</div>'; 
 
     }
     else
@@ -142,7 +140,7 @@ function BonneReponse()
         $stmt = $conn->prepare("Update joueurs Set typee = \"Alchimiste\" where IdJoueur=$idjoueur");
         $stmt->execute();
         
-        $_SESSION['Message'] = '<script>alert("Bonne Réponse ! Vos Écus ont été ajoutés à votre solde et vous venez de devenir Alchimiste !")</script>'; 
+        $_SESSION['Message'] = '<div style="color:black;">Bonne Réponse ! Vos Écus ont été ajoutés à votre solde et vous venez de devenir Alchimiste !</div>'; 
         $stmt = $conn->prepare('CALL AjouterSolde(:IdJoueur, :soldeBonus)');
 
         $stmt->bindParam(':IdJoueur', $_SESSION['Id']);

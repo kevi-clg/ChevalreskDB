@@ -10,7 +10,7 @@ $Reponsechoisie = intval($_GET['choice']);
 
 if(intval($_SESSION['Reponses'][$Reponsechoisie]["flag"]) == 1)
 {
-    $_SESSION['Message'] = '<script>alert("Bonne Réponse ! Vos Écus ont été ajoutés à votre solde")</script>'; 
+    $_SESSION['Message'] = '<div style="color:black;">Bonne Réponse ! Vos Écus ont été ajoutés à votre solde</div>'; 
     if(intval($_SESSION['DiffEnigme']) ==1)
     {
         $solde = 50;
@@ -30,7 +30,7 @@ if(intval($_SESSION['Reponses'][$Reponsechoisie]["flag"]) == 1)
 }
 else
 {
-    $_SESSION['Message'] = '<script>alert("Perdus !")</script>'; 
+    $_SESSION['Message'] = '<div style="color:black;">Perdus !</div>'; 
 }
 unset($_SESSION['Enigme']);
 unset($_SESSION['idQuestion']);

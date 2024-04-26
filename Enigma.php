@@ -14,10 +14,9 @@ if (isset($_SESSION['Enigme'])) {
     $Reponse3Txt = $_SESSION['Reponses'][2]['reponse'];
     $Reponse4Txt = $_SESSION['Reponses'][3]['reponse'];
 }
-
-if(isset($_SESSION['Message']))
-{
-    echo $_SESSION['Message'];
+$message = "";
+if (isset($_SESSION['Message'])) {
+    $message= $_SESSION['Message'];
     unset($_SESSION['Message']);
 }
 
@@ -35,19 +34,10 @@ if (!isset($_SESSION['Enigme'])) {
     <a href="fetchEnigma.php?difficulty=3&type=0">
         <button style="height:30px; width:100px;">Expert</button>
     </a>
-    <br>
-    
-    <h2>Question D'alchimiste</h2>
-    <a href="fetchEnigma.php?difficulty=1&type=1">
-        <button style="height:30px; width:100px;">Facile</button>
-    </a>
-    <a href="fetchEnigma.php?difficulty=2&type=1">
-        <button style="height:30px; width:100px;">Intermédiaire</button>
-    </a>
     <a href="fetchEnigma.php?difficulty=3&type=1">
-        <button style="height:30px; width:100px;">Expert</button>
-    </a>
-    </div>
+        <button style="height:30px; width:100px;">Aléatoire</button>
+    <br>
+    $message;
     HTML;
 } else {
     $viewContent = <<<HTML
