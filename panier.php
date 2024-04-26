@@ -14,6 +14,7 @@ $viewName = "Panier";
 $viewTitle = "Panier";
 $itemListPage = true;
 $filtre = "";
+$total = 0;
 
 $viewContent = "<table>";
 
@@ -34,6 +35,7 @@ foreach ($list as $item_Panier) {
     $cheminAjoutPanier = "DAL/functions_Panier.php?idJoueur=".$idJoueur."&idItem=".$idItem;
     $cheminRetraitPanier = "DAL/functions_Panier.php?idJoueur=".$idJoueur."&idItem=".$idItem;
     $cheminSupPanier = "DAL/functions_Panier.php?idJoueur=".$idJoueur."&idItem=".$idItem;
+    $total += intval($prix) * intval($quantite);
     if($quantite != 0)
     {
         $itemHTML = <<<HTML
@@ -41,7 +43,7 @@ foreach ($list as $item_Panier) {
                     <tr class="itemPanierContainer" title="$nom">
                         
                         <td class="itemPanier"> $nom </td>
-                        <td class="itemPanier"> $prix $</td>
+                        <td class="itemPanier"> prix : $prix $ Q:</td>
                         <td class="itemPanier">
                             <form action= $cheminRetraitPanier method="post"> 
                                 <input type="submit" name="EnleverPanier" value=" - ">
@@ -64,4 +66,14 @@ foreach ($list as $item_Panier) {
     }
 
 }
+
+$cheminPayerPanier = "DAL/functions_Panier.php?idJoueur=".$idJoueur."&total=".$total;
+    $viewContent .= <<<HTML
+                    
+                    <p class="itemPanier">Total : $total $</p>
+                <form action= $cheminPayerPanier method="post"> 
+                    <input type="submit" name="payerPanier" value="Payer">
+                </form>
+
+                HTML;
 include "views/master.php";
