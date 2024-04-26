@@ -9,7 +9,6 @@ userAccess();
 
 $viewName = "itemList";
 $viewTitle = "items";
-$itemListPage = true;
 $viewContent = "<div class='itemsLayoutInventaire'>";
 
 $list = [];

@@ -12,7 +12,6 @@ if(!isvalidUser()){
 $viewName = "Panier";
 //userAccess();
 $viewTitle = "Panier";
-$itemListPage = true;
 $filtre = "";
 $total = 0;
 
