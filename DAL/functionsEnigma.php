@@ -141,11 +141,7 @@ function BonneReponse()
         $stmt->execute();
         
         $_SESSION['Message'] = '<div style="color:black;">Bonne Réponse ! Vos Écus ont été ajoutés à votre solde et vous venez de devenir Alchimiste !</div>'; 
-        $stmt = $conn->prepare('CALL AjouterSolde(:IdJoueur, :soldeBonus)');
-
-        $stmt->bindParam(':IdJoueur', $_SESSION['Id']);
-        $stmt->bindParam(':soldeBonus', $soldebonus);
-    
-        $stmt->execute();
+        $_SESSION['Type']  = "Alchimiste";
     }
 }
+

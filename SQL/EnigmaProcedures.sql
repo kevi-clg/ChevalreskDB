@@ -25,6 +25,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `FetchEnigmeRandom`(IN `IdJoueurPara
 SELECT * FROM enigmes where IdQuestion NOT IN(Select IdQuestion from enigmesrepondues where IdJoueur = IdJoueurPara) ORDER BY RAND () LIMIT 1$$
 DELIMITER ;
 
-INSERT INTO enigmes (enigmes, diff, Typee) VALUES ('', '', '');
-
-insert into reponses (idQuestion, reponse, flag) values (SELECT LAST_INSERT_ID(), 'test', 1);
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AjouterSolde`(IN `idJoueurPara` INT, IN `soldebonus` INT)
+UPDATE joueurs set solde = solde + soldebonus where idJoueur = idJoueurPara$$
+DELIMITER ;
