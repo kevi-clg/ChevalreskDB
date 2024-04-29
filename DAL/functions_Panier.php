@@ -128,13 +128,15 @@ function payerPanier($idJoueur,$total){
         $stmt->execute();
 
         //Ajouter a l'inventaire
-        $stmt = $conn->query("SELECT quantite from panier where idJoueur = (" . $idItem . ")");
-        $quantiterPanier = $stmt->fetch();
+        $stmt = $conn->query("SELECT quantite from panier where idJoueur = (" . $idJoueur . ")");
+        $quantiter = $stmt->fetch();
+        $stmt = $conn->query("SELECT idItem from panier where idJoueur = (" . $idJoueur . ")");
+        $idItem = $stmt->fetch();
 
         $stmt = $conn->prepare('CALL AjouterInventaireDepuisPanier(:idJoueurVariable, :idItemVariable, :quantiterPanier)');
         $stmt->bindParam(':idJoueurVariable', $idJoueur);
         $stmt->bindParam(':idItemVariable', $idItem);
-        $stmt->bindParam(':quantiterPanier',$quantiterPanier);
+        $stmt->bindParam(':quantiterPanier',$quantiter);
         $stmt->execute();
 
         //vider Panier
