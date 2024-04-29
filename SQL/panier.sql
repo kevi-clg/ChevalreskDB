@@ -46,15 +46,14 @@ DELIMITER ;
 
 --enlever
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `supprimerPanier`(IN `idItemVariable` INT, IN `idJoueurVariable` INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EnleverPanier`(IN `idJoueurVariable` INT, IN `idItemVariable` INT)
 BEGIN
    
         UPDATE panier
-        SET quantite = 0
+        SET quantite = quantite - 1
         WHERE idJoueur = idJoueurVariable AND idItem = idItemVariable;
     
 END$$
-DELIMITER ;
 
 --ajouter inventaire depuis panier
 DELIMITER $$
