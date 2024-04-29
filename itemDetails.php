@@ -12,6 +12,12 @@ if (!isset($_GET['id'])) {
     redirect('itemsList.php');
 }
 
+if(isset($_GET['solde'])){
+    $message = "<div style='margin-top:20px; margin-left:20px'>Votre solde est insuffisant</div>";
+}else{
+    $message= "";
+}
+
 $viewName = "itemDetails";
 //userAccess();
 
@@ -87,7 +93,7 @@ $cheminAjoutPanier = "DAL/fonctionDetails.php?idJoueur=" . $idJoueur . "&idItem=
 
 if($itemsCraft['typee'] == "Potion"){
     $bouton = <<<HTML
-                <a href="panoramix.php?idItem=$idItem" >Panoramix</a>
+                <a href="panoramix.php?idItem=$idItem" class="button" >Panoramix</a>
     HTML;
 }else{
     $bouton = <<<HTML
@@ -114,9 +120,10 @@ $viewContent = <<<HTML
                         
                         
                         
-
-                        $bouton
-
+                        <div style="display:flex">
+                            $bouton
+                            $message
+                        </div>
                     </div>
 
 

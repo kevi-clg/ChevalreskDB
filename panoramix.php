@@ -11,6 +11,7 @@ if(!isvalidUser()){
 }
 
 
+
 $idJoueur = $_SESSION['Id'];
 
 $idItem = $_GET['idItem'];
@@ -56,11 +57,11 @@ if($quantiteE2Stock != null){
 
 $bouton = "";
 if($_SESSION['Type'] == "Alchimiste"){
-    $cheminAjoutPanier = "DAL/fonctionPanoramix.php?idJoueur=" . $idJoueur . "&idItem=" . $idItem;
+    $cheminAjoutPanier = "DAL/fonctionPanoramix.php?idJoueur=" . $idJoueur . "&idItem=" . $idItem . "&idE1=" . $idE1 . "&idE2=" . $idE2 . "&quantiteE1=" . $quantiteE1 . "&quantiteE2=" . $quantiteE2 . "&soldePayer=" . $prixPotion;
     $bouton = <<<HTML
                 
                 <form action= $cheminAjoutPanier method="post">
-                    <input type="submit" name="Concocter" value="Concocter">
+                    <input type="submit" name="concocter" value="Concocter">
                 </form>
     HTML;
 }else{
@@ -77,6 +78,7 @@ $viewContent = <<<HTML
                         </div>
                         <div>$prixPotion$</div>
                         $bouton
+                        
 
 
                 HTML;
