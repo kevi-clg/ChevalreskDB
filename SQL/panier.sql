@@ -77,3 +77,16 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
+
+--vider panier joueur
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `viderPanier`(IN `idJoueurVariable` INT)
+BEGIN
+   
+        DELETE FROM panier
+        WHERE idJoueur = idJoueurVariable;
+    
+END$$
+DELIMITER ;
+
+

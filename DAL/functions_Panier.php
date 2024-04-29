@@ -128,9 +128,19 @@ function payerPanier($idJoueur,$total){
         $stmt->execute();
 
         //Ajouter a l'inventaire
-        $stmt = $conn->
+        $stmt = $conn->query("SELECT quantite from panier where idJoueur = (" . $idItem . ")");
+        $quantiterPanier = $stmt->fetch();
+
+        $stmt = $conn->prepare('CALL AjouterInventaireDepuisPanier(:idJoueurVariable, :idItemVariable, :quantiterPanier)');
+        $stmt->bindParam(':idJoueurVariable', $idJoueur);
+        $stmt->bindParam(':idItemVariable', $idItem);
+        $stmt->bindParam(':quantiterPanier',$quantiterPanier);
+        $stmt->execute();
 
         //vider Panier
+        $stmt = $conn->prepare('CALL viderPanier(:idJoueurVariable)');
+        $stmt->bindParam(':idJoueurVariable', $idJoueur);
+        $stmt->execute();
    }
    else{
       print("votre Solde ne permet pas de payer votre facture");
