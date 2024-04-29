@@ -61,6 +61,8 @@ function LoginJoueur($alias, $motdepasse)
     else
     {
         $_SESSION['ErreurPassword'] = "Mot de Passe Invalide";
+    
+
     }
 }
 function CheckAlias($alias)
