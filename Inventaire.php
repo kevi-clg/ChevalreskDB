@@ -89,6 +89,7 @@ foreach ($list as $item) {
                 <div class="itemTitleContainerinventaire" title="$nom">
                     <div class="ellipsis">Nom: $nom</div>
                     <div class="ellipsis">Valeur: $prix écus</div>
+                    <div class="ellipsis">Quantité: $quantite</div>
                     $viewItem
                     
                 </div>
