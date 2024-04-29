@@ -44,12 +44,12 @@ foreach ($list as $item_Panier) {
                         <td class="itemPanier"> $nom </td>
                         <td class="itemPanier"> prix : $prix $ Q:</td>
                         <td class="itemPanier">
-                            <form action= $cheminRetraitPanier method="post"> 
-                                <input type="submit" name="EnleverPanier" value=" - ">
-                            </form>
-                            $quantite
                             <form action= $cheminAjoutPanier method="post">
                                 <input type="submit" name="AjouterPanier" value=" + ">
+                            </form>
+                            $quantite
+                            <form action= $cheminRetraitPanier method="post"> 
+                                <input type="submit" name="EnleverPanier" value=" - ">
                             </form>
                             
                         </td>
