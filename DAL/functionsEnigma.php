@@ -134,9 +134,8 @@ function BonneReponse()
 
     $stmt->execute();
     $rep = $stmt->fetch();
-
     $val = intval($rep['Count']);
-    if ($val >= 3) {
+    if ($val == 3) {
         $stmt = $conn->prepare("Update joueurs Set typee = \"Alchimiste\" where IdJoueur=$idjoueur");
         $stmt->execute();
         $stmt = $conn->prepare("Update joueurs Set Niveau = \"Debutant\" where IdJoueur=$idjoueur");
@@ -145,5 +144,9 @@ function BonneReponse()
         $_SESSION['Type']  = "Alchimiste";
         $_SESSION['Niveau']  = "Debutant";
     }
+}
+function fetchscoreboard()
+{
+    
 }
 
