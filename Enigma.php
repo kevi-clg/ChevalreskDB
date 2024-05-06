@@ -4,8 +4,13 @@ include 'php/date.php';
 include 'views/connection.php';
 include_once 'DAL/validUser.php';
 include_once 'DAL/fonctionRecherche.php';
+include_once 'DAL/functionsEnigma.php';
 userAccess();
 $viewName = "Enigma";
+
+$pourcentagefacile = fetchscoreboard("1");
+$pourcentageintermédiaire = fetchscoreboard("2");
+$pourcentageexpert = fetchscoreboard("3");
 
 if (isset($_SESSION['Enigme'])) {
     $Enigme = $_SESSION['Enigme'];
@@ -38,6 +43,17 @@ if (!isset($_SESSION['Enigme'])) {
         <button style="height:30px; width:100px;">Aléatoire</button>
     <br>
     $message;
+    <br>
+    <br>
+    <div style="color:black">
+    <h1>Statistiques</h1>
+    Pourcentage de Question facile réussie: $pourcentagefacile%
+    <br>
+    Pourcentage de Question Intermédiaire réussie: $pourcentageintermédiaire%
+    <br>
+    Pourcentage de Question Experte réussie: $pourcentageexpert%
+    </div>
+
     HTML;
 } else {
     $viewContent = <<<HTML
@@ -57,6 +73,17 @@ if (!isset($_SESSION['Enigme'])) {
     <a href="AnswerClick.php?choice=3">
         <button style="height:30px; width:100px;">$Reponse4Txt</button>    
     </a>
+    <br>
+    <br>
+    <div style="color:black">
+    <h1>Statistiques</h1>
+    Pourcentage de Question facile réussie: $pourcentagefacile%
+    <br>
+    Pourcentage de Question Intermédiaire réussie: $pourcentageintermédiaire%
+    <br>
+    Pourcentage de Question Experte réussie: $pourcentageexpert%
+    </div>
     HTML;
 }
+
 include "views/master.php";
