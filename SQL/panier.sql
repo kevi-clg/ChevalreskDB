@@ -54,6 +54,7 @@ BEGIN
         WHERE idJoueur = idJoueurVariable AND idItem = idItemVariable;
     
 END$$
+DELIMITER ;
 
 --ajouter inventaire depuis panier
 DELIMITER $$
