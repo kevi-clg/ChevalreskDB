@@ -103,6 +103,13 @@ if($itemsCraft['typee'] == "Potion"){
                         
     HTML;
 }
+if($type != "Potion"){
+    $viewPrix = <<<HTML
+                    <div>Prix: $prix$</div>
+    HTML;
+}else{
+    $viewPrix = "";
+}
 
 $viewContent = <<<HTML
                     <div>
@@ -112,7 +119,7 @@ $viewContent = <<<HTML
                             <div>
                                 <div>Type: $type</div>
                                 <div>Quantité en stock: $quantite</div>
-                                <div>Prix: $prix$</div>
+                                $viewPrix
                                 $viewItem
 
                             </div>

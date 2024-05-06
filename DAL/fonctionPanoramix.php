@@ -84,6 +84,7 @@ function Concocter($idJoueur,$idItem,$idE1,$idE2,$quantiteE1,$quantiteE2,$soldeP
     $stmt->bindParam(':soldePayer', $soldePayer);
     $stmt->execute();
     $_SESSION['Solde'] -= $soldePayer;
+    
     redirect("../inventaire.php");
 }
 
