@@ -139,9 +139,11 @@ function BonneReponse()
     if ($val >= 3) {
         $stmt = $conn->prepare("Update joueurs Set typee = \"Alchimiste\" where IdJoueur=$idjoueur");
         $stmt->execute();
-        
+        $stmt = $conn->prepare("Update joueurs Set Niveau = \"Debutant\" where IdJoueur=$idjoueur");
+        $stmt->execute();
         $_SESSION['Message'] = '<div style="color:black;">Bonne Réponse ! Vos Écus ont été ajoutés à votre solde et vous venez de devenir Alchimiste !</div>'; 
         $_SESSION['Type']  = "Alchimiste";
+        $_SESSION['Niveau']  = "Debutant";
     }
 }
 
