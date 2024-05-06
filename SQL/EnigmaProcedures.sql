@@ -20,7 +20,7 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `FetchEnigme`(IN `DiffParam` INT, IN `IdJoueurPara` INT)
 SELECT * FROM enigmes where diff = DiffParam && IdQuestion NOT IN(Select IdQuestion from enigmesrepondues where IdJoueur = IdJoueurPara) ORDER BY RAND () LIMIT 1$$
 DELIMITER ;
-DELIMITER $$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `FetchEnigmeRandom`(IN `IdJoueurPara` INT)
 SELECT * FROM enigmes where IdQuestion NOT IN(Select IdQuestion from enigmesrepondues where IdJoueur = IdJoueurPara) ORDER BY RAND () LIMIT 1$$
 DELIMITER ;
