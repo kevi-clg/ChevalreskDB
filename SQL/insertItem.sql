@@ -43,3 +43,16 @@ begin
     insert into éléments values (id, Typee, rarete, dangerosite);
 end$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AjouterEnigmes`(IN `enigmeVariable` VARCHAR(100), IN `difficulte` CHAR(1), IN `typeEnigme` CHAR(1), IN `r1` VARCHAR(20), IN `flag1` INT, IN `r2` VARCHAR(20), IN `flag2` INT, IN `r3` VARCHAR(20), IN `flag3` INT, IN `r4` VARCHAR(20), IN `flag4` INT)
+begin
+	declare id int;
+    insert into enigmes(enigme,diff,typee) values(enigmeVariable, difficulte,typeEnigme);
+    set id = (select idQuestion from enigmes order by idQuestion desc LIMIT 1);
+    insert into reponses (idQuestion,reponse,flag) values (id, r1,flag1);
+    insert into reponses (idQuestion,reponse,flag) values (id, r2,flag2);
+    insert into reponses (idQuestion,reponse,flag) values (id, r3,flag3);
+    insert into reponses (idQuestion,reponse,flag) values (id, r4,flag4);
+end$$
+DELIMITER ;
