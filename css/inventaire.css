@@ -22,3 +22,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.commentairesContainerInventaire{
+    display: flex; 
+    align-items: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 20px;
+    padding-left: 20px;
+}

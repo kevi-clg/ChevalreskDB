@@ -120,3 +120,30 @@ function EditJoueur($alias, $prenom, $nom, $motdepasse, $avatar, $id)
     LoginJoueur($alias, $motdepasse);
     redirect('ProfileList.php');    
 }
+function SearchCommentaire($idjoueur, $idItem)
+{
+    $host = 'localhost';
+    $db = 'dbchevalersk18';
+    $user = 'root';
+    $password = '';
+    $charset = 'utf8';
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+   try {
+       $conn = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+   } catch (\Throwable $th) {
+       throw new PDOException($th->getMessage());
+   }
+
+    $stmt = $conn->prepare('CALL FetchCommentaire(:IdJoueurPara, :IdItemPara)');
+    $stmt->bindParam(':IdJoueurPara', $idjoueur);
+    $stmt->bindParam(':IdItemPara', $idItem);
+
+    $stmt->execute();
+    $comm = $stmt->fetch();
+    If($comm["nbEtoile"])
+    {
+    $_SESSION['NbEtoile'] = $comm["nbEtoile"];
+    $_SESSION['commentaire'] = $comm["commentaire"];
+    }
+    
+}

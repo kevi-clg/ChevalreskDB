@@ -2,8 +2,9 @@
 include 'php/sessionManager.php';
 include 'php/date.php';
 include 'views/connection.php';
+include 'DAL/fonctionDetails.php';
 include_once 'DAL/validUser.php';
-include_once 'DAL/fonctionDetails.php';
+include_once 'DAL/functions.php';
 userAccess();
 
 
@@ -22,6 +23,7 @@ foreach ($list as $item) {
 
 
     $id = $item["IdItem"];
+    
     $quantite = $item['quantite'];
     $stmt = $conn->query("SELECT nom, photo, prix, typee from items where idItem in (" . $id . ")");
     $item = $stmt->fetch();
@@ -29,7 +31,36 @@ foreach ($list as $item) {
     $image = "data/images/items/" . $item['photo'];
     $prix = $item["prix"];
     $type = $item["typee"];
-
+    SearchCommentaire(intval($_SESSION['Id']), $id);
+    $viewetoile = ""; 
+    if(isset($_SESSION['NbEtoile']))
+    {
+        $compteurEtoile = 0;
+        $commentaire = $_SESSION['commentaire'];
+        $nbEtoile = intval($_SESSION['NbEtoile']);
+        $viewEtoile = "<div>";
+        for($i=0; $i < 5; $i++) { 
+            if($compteurEtoile < $nbEtoile){
+                $viewEtoile .= "<i class='fa-solid fa-star'></i>";
+            }
+            else
+            {
+                $viewEtoile .= "<i class='fa-regular fa-star'></i></i>";
+            }
+            $compteurEtoile++;
+        }
+        $viewEtoile .= "</div>";    
+        $viewetoile = <<<HTML
+                            <fieldset class='commentairesContainerInventaire'>
+                                <div class="titreCommentaire">
+                                </div>    
+                                $viewEtoile
+                                <div>$commentaire</div>
+                            </fieldset>
+                        HTML;          
+    }
+    unset($_SESSION['commentaire']);
+    unset($_SESSION['NbEtoile']);
     switch ($item['typee']) {
         case 'Arme':
            $item = RechercheArme($id);
@@ -93,11 +124,11 @@ foreach ($list as $item) {
                     $viewItem
                     
                 </div>
+                $viewetoile
             </div>
         </a>
     </div>
 HTML;
-
 
     $viewContent = $viewContent . $itemHTML;
 
