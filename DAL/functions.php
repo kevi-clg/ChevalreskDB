@@ -57,6 +57,7 @@ function LoginJoueur($alias, $motdepasse)
         $_SESSION['Password'] = $login["password"];
         $_SESSION['validUser'] = true;
         $_SESSION['photo'] = $login["avatar"];
+        $_SESSION['IsAdmin'] = $login["admin"];
     }
     else
     {
