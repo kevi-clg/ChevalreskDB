@@ -88,10 +88,10 @@ $prix = $itemsCraft["prix"];
 $type = $itemsCraft['typee'];
 $quantite = $itemsCraft['quantite'];
 $itemMoyenne = MoyenneEtoile($idItem);
-$moyenneEtoile = round($itemMoyenne['moyenne'],2);
+$moyenneEtoile = numval($itemMoyenne['moyenne']);
 $viewMoyenneEtoile = "<div>";
 $compteurEtoile = 1;
-if(is_int($moyenneEtoile)){
+if(is_int((int)$moyenneEtoile)){
     for($i=0; $i < 5; $i++) { 
         if($compteurEtoile <= $moyenneEtoile){
             $viewMoyenneEtoile .= "<i class='fa-solid fa-star'></i>";

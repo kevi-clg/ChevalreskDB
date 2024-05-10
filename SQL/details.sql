@@ -50,3 +50,10 @@ BEGIN
     where items.idItem = idItemVariable;
 END$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `moyenneEvaluation`(IN `idItemVariable` INT)
+BEGIN
+	select avg(nbEtoile) as moyenne from évaluation where idItem = idItemVariable;
+END$$
+DELIMITER ;
