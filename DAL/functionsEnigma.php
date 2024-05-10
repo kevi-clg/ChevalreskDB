@@ -107,6 +107,8 @@ function AddEcus($soldebonus)
     $stmt->bindParam(':soldeBonus', $soldebonus);
 
     $stmt->execute();
+
+    
 }
 
 function BonneReponse()
@@ -145,8 +147,33 @@ function BonneReponse()
         $_SESSION['Niveau']  = "Debutant";
     }
 }
-function fetchscoreboard()
+function fetchscoreboard($diff)
 {
-    
+    $host = 'localhost';
+    $db = 'dbchevalersk18';
+    $user = 'root';
+    $password = '';
+    $charset = 'utf8';
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    try {
+        $conn = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+    } catch (\Throwable $th) {
+        throw new PDOException($th->getMessage());
+    }
+    $diff = intval($diff);
+    $stmt = $conn->prepare("Select * from enigmastats where Diff=$diff");
+    $stmt->execute();
+
+    $stats = $stmt->fetch();
+    $bonneReponse = intval($stats['Bonne']);
+    $mauvaiseReponse = intval($stats['Mauvaise']);
+    if($bonneReponse+$mauvaiseReponse != 0){
+    $pourcentage = ($bonneReponse * 100)/($bonneReponse+$mauvaiseReponse);
+    }
+    else
+    {
+        $pourcentage = 0;
+    }
+    return round($pourcentage, 0);
 }
 
