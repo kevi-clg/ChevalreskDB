@@ -317,6 +317,7 @@ span2 {
 
   .detailsContainer {
     display: flex; /* Utilisation de flexbox pour aligner les éléments horizontalement */
+    
     align-items: center;
     /* Pour aligner les éléments verticalement */
 }
@@ -327,6 +328,7 @@ span2 {
 
 .commentairesContainer{
     display: flex; /* Utilisation de flexbox pour aligner les éléments horizontalement */
+    
     align-items: center;
     margin-left: 20px;
 }

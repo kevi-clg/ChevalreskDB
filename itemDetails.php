@@ -87,7 +87,37 @@ $image = "data/images/items/" . $itemsCraft['photo'];
 $prix = $itemsCraft["prix"];
 $type = $itemsCraft['typee'];
 $quantite = $itemsCraft['quantite'];
-
+$itemMoyenne = MoyenneEtoile($idItem);
+$moyenneEtoile = round($itemMoyenne['moyenne'],2);
+$viewMoyenneEtoile = "<div>";
+$compteurEtoile = 1;
+if(is_int($moyenneEtoile)){
+    for($i=0; $i < 5; $i++) { 
+        if($compteurEtoile <= $moyenneEtoile){
+            $viewMoyenneEtoile .= "<i class='fa-solid fa-star'></i>";
+        }
+        else
+        {
+            $viewMoyenneEtoile .= "<i class='fa-regular fa-star'></i></i>";
+        }
+        $compteurEtoile++;
+    }
+   
+}else{
+    for($i=0; $i < 5; $i++) { 
+        if($compteurEtoile < round($moyenneEtoile)){
+            $viewMoyenneEtoile .= "<i class='fa-solid fa-star'></i>";
+        }
+        else if($compteurEtoile > round($moyenneEtoile))
+        {
+            $viewMoyenneEtoile .= "<i class='fa-regular fa-star'></i></i>";
+        }else{
+            $viewMoyenneEtoile .= "<i class='fa-solid fa-star-half-stroke'></i>";
+        }
+        $compteurEtoile++;
+    }
+}
+ $viewMoyenneEtoile .= "</div>";
 
 $cheminAjoutPanier = "DAL/fonctionDetails.php?idJoueur=" . $idJoueur . "&idItem=" . $idItem;
 
@@ -121,7 +151,10 @@ $viewContent = <<<HTML
                                 <div>Quantité en stock: $quantite</div>
                                 $viewPrix
                                 $viewItem
-
+                                <div style="display: flex;grid-template-columns: auto 110px;">
+                                   <span> $viewMoyenneEtoile</span>
+                                    <span>$moyenneEtoile</span>
+                                </div>
                             </div>
                         </div>
                         
