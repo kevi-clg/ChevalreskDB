@@ -17,6 +17,7 @@ INSERT INTO joueurs (alias, prenom, nom, password, avatar) VALUES ('Kévi_S5', '
 INSERT INTO joueurs (alias, prenom, nom, password, avatar) VALUES ('Damien_N6', 'Damien', 'Noël', 'password', 'data/images/avatars/Damien-Icon-092159.png');
 INSERT INTO joueurs (alias, prenom, nom, password, avatar) VALUES ('Prof_cool103', 'Luc', 'Ledoux', 'password', 'data/images/avatars/vector-valid-icon-design.jpg');
 INSERT INTO joueurs (alias, prenom, nom, password, avatar) VALUES ('Wilson23', 'Tom', 'Hanks', 'password', 'data/images/avatars/Ballon-Icon- 092550.png');
+INSERT INTO joueurs (alias, prenom, nom, password, avatar) VALUES ('bob', 'bob', 'bob', 'password', 'data/images/avatars/Ballon-Icon- 092550.png');
 
 
 delete from tabledecraft;

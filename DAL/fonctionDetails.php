@@ -74,10 +74,7 @@ function rechercheCommentaire($idItem){
     return $list;
 }
 
-if(isset($_POST['AjouterPanier'])) {
-    // Appeler votre fonction PHP ici
-    AjouterPanier($_GET['idJoueur'],$_GET['idItem']);
-}
+
 
 function RechercheArme($idItem){
     $host = 'localhost';
@@ -203,3 +200,27 @@ function MoyenneEtoile($idItem){
 }
 
 
+if(isset($_POST['AjouterPanier'])) {
+    // Appeler votre fonction PHP ici
+    AjouterPanier($_GET['idJoueur'],$_GET['idItem']);
+}
+
+if(isset($_POST['SupprimerCommentaire'])) {
+    $host = 'localhost';
+    $db = 'dbchevalersk18';
+    $user = 'root';
+    $password = '';
+    $charset = 'utf8';
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+   try {
+       $conn = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+   } catch (\Throwable $th) {
+       throw new PDOException($th->getMessage());
+   }
+    $stmt = $conn->prepare('CALL supprimerCommentaire(:idJoueurVariable, :idItemVariable)');
+    
+    $stmt->bindParam(':idJoueurVariable', $_GET['idJoueur']);
+    $stmt->bindParam(':idItemVariable', $_GET['idItem']);
+    $stmt->execute();
+    redirect("../itemDetails.php?id=". $_GET['idItem']);
+}

@@ -353,3 +353,21 @@ span2 {
     cursor: pointer;
     
   }
+
+  .containerBar{
+    display:flex;
+    margin-bottom:10px;
+    margin-left:20px;
+  }
+
+  .barVide{
+    width:100px;
+    margin-left:10px;
+    margin-right:10px;
+   
+  }
+
+  .barNoir{
+    background-color: black;
+    color:black;
+  }

@@ -6,12 +6,17 @@ include 'php/date.php';
 include 'views/connection.php';
 include_once 'DAL/validUser.php';
 include_once 'DAL/fonctionDetails.php';
+include_once 'DAL/isAdmin.php';
 
 
 if (!isset($_GET['id'])) {
     redirect('itemsList.php');
 }
-
+if(isAdmin()){
+    $admin = true;
+}else{
+    $admin = false;
+}
 if(isset($_GET['solde'])){
     $message = "<div style='margin-top:20px; margin-left:20px'>Votre solde est insuffisant</div>";
 }else{
@@ -88,10 +93,10 @@ $prix = $itemsCraft["prix"];
 $type = $itemsCraft['typee'];
 $quantite = $itemsCraft['quantite'];
 $itemMoyenne = MoyenneEtoile($idItem);
-$moyenneEtoile = numval($itemMoyenne['moyenne']);
+$moyenneEtoile = round($itemMoyenne['moyenne']);
 $viewMoyenneEtoile = "<div>";
 $compteurEtoile = 1;
-if(is_int((int)$moyenneEtoile)){
+if(is_float($moyenneEtoile)){
     for($i=0; $i < 5; $i++) { 
         if($compteurEtoile <= $moyenneEtoile){
             $viewMoyenneEtoile .= "<i class='fa-solid fa-star'></i>";
@@ -102,7 +107,7 @@ if(is_int((int)$moyenneEtoile)){
         }
         $compteurEtoile++;
     }
-   
+
 }else{
     for($i=0; $i < 5; $i++) { 
         if($compteurEtoile < round($moyenneEtoile)){
@@ -153,7 +158,6 @@ $viewContent = <<<HTML
                                 $viewItem
                                 <div style="display: flex;grid-template-columns: auto 110px;">
                                    <span> $viewMoyenneEtoile</span>
-                                    <span>$moyenneEtoile</span>
                                 </div>
                             </div>
                         </div>
@@ -164,6 +168,41 @@ $viewContent = <<<HTML
                             $bouton
                             $message
                         </div>
+                        <div class="containerBar">
+                            1 étoile
+                             <div class="barVide">
+                                <div class="barNoir" style="width:50px">i</div>
+                             </div>
+                            %
+                        </div>
+                        <div class="containerBar">
+                            2 étoiles
+                             <div class="barVide">
+                                <div class="barNoir" style="width:50px">i</div>
+                             </div>
+                            %
+                        </div>
+                        <div class="containerBar">
+                            3 étoiles
+                             <div class="barVide">
+                                <div class="barNoir" style="width:50px">i</div>
+                             </div>
+                            %
+                        </div>
+                        <div class="containerBar">
+                            4 étoiles
+                             <div class="barVide">
+                                <div class="barNoir" style="width:50px">i</div>
+                             </div>
+                            %
+                        </div>
+                        <div class="containerBar">
+                            5 étoiles
+                             <div class="barVide">
+                                <div class="barNoir" style="width:50px">i</div>
+                             </div>
+                            %
+                        </div>
                     </div>
 
 
@@ -173,11 +212,22 @@ $viewContent = <<<HTML
 $listCommentaire = rechercheCommentaire($idItem);
 
 foreach ($listCommentaire as $key => $comments) {
+    $idJoueurComment = $comments['idJoueur'];
     $userImage = $comments['avatar'];
     $userAlias = $comments['alias'];
     $commentaire = $comments['commentaire'];
     $nbEtoile = $comments['nbEtoile'];
     $compteurEtoile = 0;
+    if($admin || $idJoueurComment == $_SESSION['Id']){
+        $cheminAdmin = "DAL/fonctionDetails.php?idJoueur=" . $idJoueurComment . "&idItem=" . $idItem;
+        $viewAdmin = <<<HTML
+                 <form action= $cheminAdmin method="post">
+                    <input type="submit" name="SupprimerCommentaire" value="x">
+                </form>
+        HTML; 
+    }else{
+        $viewAdmin = "";
+    }
 
     $viewEtoile = "<div>";
     for($i=0; $i < 5; $i++) { 
@@ -198,6 +248,7 @@ foreach ($listCommentaire as $key => $comments) {
                             <div class="titreCommentaire">
                                 <div class="UserAvatarSmall" style="background-image:url('$userImage')"></div>
                                 <div style="margin-top:15px;margin-left:20px">$userAlias</div>
+                                $viewAdmin
                             </div>    
                             $viewEtoile
                             <div>$commentaire</div>
