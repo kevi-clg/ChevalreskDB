@@ -122,6 +122,7 @@ foreach ($list as $item) {
                     <div class="ellipsis">Valeur: $prix écus</div>
                     <div class="ellipsis">Quantité: $quantite</div>
                     $viewItem
+                    <a href="evaluationForm.php?id=$id" class="form-control btn-secondary">commentaire</a>
                     
                 </div>
                 $viewetoile

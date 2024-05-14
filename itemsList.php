@@ -69,8 +69,8 @@ foreach ($list as $itemsCraft) {
                     </a>
                     <div class="itemTitleContainer" title="$nom">
                         <div class="itemTitle ellipsis">$nom</div>
-                        <div class="itemTitle ellipsis">$prix écus</div>
                     </div>
+                    <div class="itemTitle ellipsis">$prix écus</div>
                     
                         
                         

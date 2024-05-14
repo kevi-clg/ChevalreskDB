@@ -89,4 +89,10 @@ BEGIN
 END$$
 DELIMITER ;
 
-
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `payerPanier`(IN `idJoueurVariable` INT, IN `total` INT)
+BEGIN
+	UPDATE joueurs set solde = solde - total where idJoueur = idJoueurVariable;
+    delete from panier where idJoueur = idJoueurVariable;
+END$$
+DELIMITER ;

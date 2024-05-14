@@ -2,6 +2,7 @@
 require 'php/sessionManager.php';
 $viewTitle = "Évaluation";
 include_once 'DAL/validUser.php';
+include_once 'DAL/fonctionCommentaire.php';
 
 anonymousAccess();
 if(!isvalidUser()){
@@ -43,7 +44,7 @@ $viewContent = <<<HTML
             
            
             
-            <input type='submit' name='submit' id='evaluation' value="Enregistrer" class="form-control btn-primary">
+            <input type='submit' name='AjouterCommentaire' id='evaluation' value="Enregistrer" class="form-control btn-primary">
         </form>
         <div class="cancel">
             <a href="inventaire.php.php">
