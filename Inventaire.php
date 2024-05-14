@@ -23,7 +23,7 @@ foreach ($list as $item) {
 
 
     $id = $item["IdItem"];
-    
+
     $quantite = $item['quantite'];
     $stmt = $conn->query("SELECT nom, photo, prix, typee from items where idItem in (" . $id . ")");
     $item = $stmt->fetch();
@@ -32,48 +32,47 @@ foreach ($list as $item) {
     $prix = $item["prix"];
     $type = $item["typee"];
     SearchCommentaire(intval($_SESSION['Id']), $id);
-    $viewetoile = ""; 
-    if(isset($_SESSION['NbEtoile']))
-    {
+    $viewetoile = "";
+    if (isset($_SESSION['NbEtoile'])) {
         $compteurEtoile = 0;
         $commentaire = $_SESSION['commentaire'];
         $nbEtoile = intval($_SESSION['NbEtoile']);
         $viewEtoile = "<div>";
-        for($i=0; $i < 5; $i++) { 
-            if($compteurEtoile < $nbEtoile){
+        for ($i = 0; $i < 5; $i++) {
+            if ($compteurEtoile < $nbEtoile) {
                 $viewEtoile .= "<i class='fa-solid fa-star'></i>";
-            }
-            else
-            {
+            } else {
                 $viewEtoile .= "<i class='fa-regular fa-star'></i></i>";
             }
             $compteurEtoile++;
         }
-        $viewEtoile .= "</div>";    
+        $viewEtoile .= "</div>";
         $viewetoile = <<<HTML
                             <fieldset class='commentairesContainerInventaire'>
+                                <div class='commentbox'>
                                 <div class="titreCommentaire">
                                 </div>    
                                 $viewEtoile
                                 <div>$commentaire</div>
+                                </div>
                             </fieldset>
-                        HTML;          
+                        HTML;
     }
     unset($_SESSION['commentaire']);
     unset($_SESSION['NbEtoile']);
     switch ($item['typee']) {
         case 'Arme':
-           $item = RechercheArme($id);
-           $efficacite = $item['efficacite'];
-           $genre = $item['genre'];
-           $description = $item['descriptionArme'];        
-           $viewItem .= <<<HTML
+            $item = RechercheArme($id);
+            $efficacite = $item['efficacite'];
+            $genre = $item['genre'];
+            $description = $item['descriptionArme'];
+            $viewItem .= <<<HTML
                             <div>Efficacité: $efficacite</div>
                             <div>Nombre de mains: $genre</div>
                             <div>Description: $description</div>
            HTML;
             break;
-        
+
         case 'Armure':
             $item = RechercheArmure($id);
             $matiere = $item['matiere'];
@@ -96,7 +95,7 @@ foreach ($list as $item) {
                             <div>Type: $typePotion</div>
             HTML;
             break;
-        
+
         case 'Potion':
             $item = RecherchePotion($id);
             $typePotion = $item['type'];
@@ -109,7 +108,7 @@ foreach ($list as $item) {
             HTML;
             break;
     }
-    
+
 
 
     $itemHTML = <<<HTML
