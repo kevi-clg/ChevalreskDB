@@ -31,4 +31,6 @@
     text-overflow: ellipsis;
     margin-left: 20px;
     padding-left: 20px;
+    margin-top: 20px;
+    height: 100%;
 }
