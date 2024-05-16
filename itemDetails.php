@@ -6,6 +6,7 @@ include 'php/date.php';
 include 'views/connection.php';
 include_once 'DAL/validUser.php';
 include_once 'DAL/fonctionDetails.php';
+include_once 'DAL/fonctionCommentaire.php';
 include_once 'DAL/isAdmin.php';
 
 
@@ -145,6 +146,26 @@ if($type != "Potion"){
 }else{
     $viewPrix = "";
 }
+$stats = statsEtoile($idJoueur,$idItem);
+$totalStats = $stats['TotalEnregistrements'];
+if($totalStats != 0){
+    $Etoile5 = $stats['NbEtoile5'];
+    $Etoile5 = $Etoile5 * 100 / $total;
+    $Etoile4 = $stats['NbEtoile5'];
+    $Etoile4 = $Etoile4 * 100 / $total;
+    $Etoile3 = $stats['NbEtoile5'];
+    $Etoile3 = $Etoile3 * 100 / $total;
+    $Etoile2 = $stats['NbEtoile5'];
+    $Etoile2 = $Etoile2 * 100 / $total;
+    $Etoile1 = $stats['NbEtoile5'];
+    $Etoile1 = $Etoile1 * 100 / $total;
+}else{
+    $Etoile5 = 0;
+    $Etoile4 = 0;
+    $Etoile3 = 0;
+    $Etoile2 = 0;
+    $Etoile1 = 0;
+}
 
 $viewContent = <<<HTML
                     <div>
@@ -171,37 +192,37 @@ $viewContent = <<<HTML
                         <div class="containerBar">
                             1 étoile
                              <div class="barVide">
-                                <div class="barNoir" style="width:50px">i</div>
+                                <div class="barNoir" style="width:$Etoile1">i</div>
                              </div>
-                            %
+                             $Etoile1%
                         </div>
                         <div class="containerBar">
                             2 étoiles
                              <div class="barVide">
-                                <div class="barNoir" style="width:50px">i</div>
+                                <div class="barNoir" style="width:$Etoile2">i</div>
                              </div>
-                            %
+                             $Etoile2%
                         </div>
                         <div class="containerBar">
                             3 étoiles
                              <div class="barVide">
-                                <div class="barNoir" style="width:50px">i</div>
+                                <div class="barNoir" style="width:$Etoile3">i</div>
                              </div>
-                            %
+                             $Etoile3%
                         </div>
                         <div class="containerBar">
                             4 étoiles
                              <div class="barVide">
-                                <div class="barNoir" style="width:50px">i</div>
+                                <div class="barNoir" style="width:$Etoile4">i</div>
                              </div>
-                            %
+                             $Etoile4%
                         </div>
                         <div class="containerBar">
                             5 étoiles
                              <div class="barVide">
-                                <div class="barNoir" style="width:50px">i</div>
+                                <div class="barNoir" style="width:$Etoile5">i</div>
                              </div>
-                            %
+                             $Etoile5%
                         </div>
                     </div>
 

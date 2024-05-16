@@ -15,12 +15,12 @@ $Commentaire = "";
 
 
 
-
+$chemin = "DAL/fonctionCommentaire.php?idJoueur=" . $idJoueur . "&idItem=" . $idItem;
 $viewContent = <<<HTML
 
     <div class="content loginForm">
         <br>
-        <form method='post' action='EditJoueur.php'>
+        <form method='post' action= $chemin>
         <fieldset>
                 <legend>Commentaire</legend>
                 <input  type="text" 
@@ -47,7 +47,7 @@ $viewContent = <<<HTML
             <input type='submit' name='AjouterCommentaire' id='evaluation' value="Enregistrer" class="form-control btn-primary">
         </form>
         <div class="cancel">
-            <a href="inventaire.php.php">
+            <a href="inventaire.php">
                 <button class="form-control btn-secondary">Retour</button>
             </a>
         </div>
