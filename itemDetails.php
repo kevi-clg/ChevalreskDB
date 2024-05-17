@@ -146,7 +146,7 @@ if($type != "Potion"){
 }else{
     $viewPrix = "";
 }
-$stats = statsEtoile($idJoueur,$idItem);
+//$stats = statsEtoile($idJoueur,$idItem);
 $totalStats = $stats['TotalEnregistrements'];
 if($totalStats != 0){
     $Etoile5 = $stats['NbEtoile5'];

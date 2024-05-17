@@ -29,3 +29,7 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AjouterSolde`(IN `idJoueurPara` INT, IN `soldebonus` INT)
 UPDATE joueurs set solde = solde + soldebonus where idJoueur = idJoueurPara$$
 DELIMITER ;
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CountQuestions`(IN `IdJoueurPara` INT)
+Select COUNT(*) as Count from enigmesrepondues left join enigmes on enigmesrepondues.idQuestion = enigmes.idQuestion where IdJoueur = IdJoueurPara && typee = 'P'$$
+DELIMITER ;
