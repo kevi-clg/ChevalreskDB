@@ -22,3 +22,8 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `FetchCommentaire`(IN `IdJoueurPara` INT, IN `IdItemPara` INT)
 SELECT * from evaluation where IdJoueur = IdJoueurPara and IdItem = IdItemPara$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `FetchCommentaire`(IN `IdJoueurPara` INT, IN `IdItemPara` INT)
+SELECT * from evaluation where IdJoueur = IdJoueurPara and IdItem = IdItemPara$$
+DELIMITER ;
